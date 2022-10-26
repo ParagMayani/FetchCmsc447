@@ -1,5 +1,5 @@
 # Start Instructions
-Navigate to the project directory in a terminal after downloading it 
+Navigate to the 'client' directory in a terminal after cloning the repository.
 
 
 ## Enter the following command to start the application services:
