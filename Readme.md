@@ -1,10 +1,9 @@
 # Start Instructions
-to start the webservice in Local
+Navigate to the project directory in a terminal after downloading it 
 
 ```
 type 
-./client: 
-npm start
+./client:npm start
 
 ```
 
