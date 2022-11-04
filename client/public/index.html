@@ -30,23 +30,20 @@
     
                     <section id="user_box">
                         <div class = "dropdown">
-                        <img class ="sign_in" src="img_avatar.png" alt="Avatar"></img>
-                            <div class = "dropdown-content">
-                                <a href="">Sign in</p>
-                                <a href="">Sign Out</p>
+                            <div id="g_id_onload"
+                                data-client_id="YOUR_CLIENT_ID"
+                                data-callback="handleCredentialResponse">
                             </div>
-                        </div>
+                            <div class="g_id_signin" data-type="icon"></div>
+                                <div class = "dropdown-content">
+                                    <a href="">Sign in</p>
+                                    <a href="">Sign Out</p>
+                                </div>
+                            </div>
                     </section>
 
                     
-                    <div id="g_id_onload"
-                        data-client_id="YOUR_GOOGLE_CLIENT_ID"
-                        data-login_uri="https://your.domain/your_login_endpoint"
-                        data-auto_prompt="false">
-                    </div>
-                    <div class="g_id_signin"
-                        data-logo_alignment="left">
-                    </div>  
+                    
                         
                 </section>
         </header>
