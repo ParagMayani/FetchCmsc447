@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './layout.js'
-import Board from './board'
 
 
 const content = ReactDOM.createRoot(document.getElementById('content'));
 content.render(
-  <React.StrictMode>
-    <Board />
-  </React.StrictMode>
+    <App />
 );
 
 // If you want to start measuring performance in your app, pass a function

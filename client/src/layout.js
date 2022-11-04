@@ -1,21 +1,16 @@
 import './fetch.css'
-import image from './images/v1008-25-b.jpg'
+import {useState} from 'react'
 
-var date = 0;
-
-function Thread(){
-    return (
-        <div></div>
-    );
+function Thread(props){
+    return 
+    <thread>
+        <h2>{props.title}</h2>
+        {props.body}
+    </thread>
 }
 
 function App(){
-    return (
-        <div>
-            Nothing
-        </div>
-        
-    );
+    return <p>Nothing</p>
 }
 
 export default App;
