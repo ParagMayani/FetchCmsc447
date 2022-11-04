@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './layout'
+import App from './layout.js'
+import Board from './board'
 
 
 const content = ReactDOM.createRoot(document.getElementById('content'));
 content.render(
   <React.StrictMode>
-    <App />
+    <Board />
   </React.StrictMode>
 );
 

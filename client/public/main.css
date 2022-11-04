@@ -118,6 +118,7 @@
     width: auto;
     height: auto;
 }
+
 .thread_box{
     width:inherit;
     height: 50px;
@@ -126,8 +127,9 @@
     vertical-align: middle;
 }
 
-img {
-    border-radius: 50%;
+#background_img {
+    width: 400px;
+    height: 400px;
 }
 
 .sign_in{

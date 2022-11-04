@@ -18,3 +18,6 @@ Enter the following command in client directory
 ```
 npm install react-scripts 
 ```
+
+
+<a href="https://www.freepik.com/free-vector/cute-animal-pattern-background-wallpaper-paw-print-vector-illustration_19085844.htm#query=dog%20bone&position=19&from_view=keyword">Image by rawpixel.com</a> on Freepik
