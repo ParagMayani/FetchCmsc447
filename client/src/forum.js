@@ -9,7 +9,7 @@ function Forum(props){
         <section id='forum'>
             <div class='bar1'></div>
             <div class='forum_name'>
-                Sample
+                Sample Forum
                 <a href='/createThread'><button class='create_button'> + </button></a>
                 </div>  
             <div class='bar1'></div>

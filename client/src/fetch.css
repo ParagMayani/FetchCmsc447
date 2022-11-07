@@ -112,6 +112,7 @@ header{
     border: 2px solid green;
     margin-left: auto;
     margin-right: auto;
+    background-color: white;
 }
 
 
@@ -163,6 +164,8 @@ header{
     width:inherit;
     height: 60px;
     border: 2px solid blue;
+    background-color: white;
+    
 }
 
 #board{
@@ -192,7 +195,7 @@ header{
 }
 .thread_article{
     width: 500px;
-    height: 600px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
 }
@@ -252,6 +255,7 @@ header{
     display: block;
     width: auto;
     height: auto;
+    background-color: white;
 }
 
 .thread_box{
@@ -266,7 +270,10 @@ header{
 .forum_box{
     height: 60px;
     font-size: 40px;
+    font-weight: bold;
     text-align: center;
+    
+    background-color: cadetblue;
 }
 
 footer{

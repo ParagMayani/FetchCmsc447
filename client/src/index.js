@@ -6,16 +6,21 @@ import Thread from './thread'
 import Board from './board'
 import Footer from './footer'
 import Create from './create'
+import Create_Profile from './profile_create.js';
+
+import {BrowserRouter} from 'react-router-dom';
 
 const content = ReactDOM.createRoot(document.getElementById('content'));
 content.render(
   <React.StrictMode>
+    <BrowserRouter>
     <Board/>
     <Thread/>
     <Forum/>
     <Create/>
+    <Create_Profile/>
     <Footer/>
-    
+    </BrowserRouter>
   </React.StrictMode>
 );
 
