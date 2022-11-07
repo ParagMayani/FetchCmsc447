@@ -1,7 +1,7 @@
 function error(){
     return (
         <div>
-            404
+            404 Error
         </div>
     );
 }

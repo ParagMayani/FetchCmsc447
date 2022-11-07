@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './layout.js'
-
+import Forum from './forum'
+import Thread from './thread'
+import Board from './board'
 
 const content = ReactDOM.createRoot(document.getElementById('content'));
 content.render(
-    <App />
+  <React.StrictMode>
+    <Forum/>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

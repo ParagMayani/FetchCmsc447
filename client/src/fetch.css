@@ -10,7 +10,6 @@ header{
     top: 0px;
     width: auto;
     height: auto;
-    ;
 }
 
 .logo{
@@ -22,6 +21,11 @@ header{
     font-weight: bold;
     text-decoration: none;
     color: gold;
+}
+
+.main_image{
+    width: 400px;
+    height: auto;
 }
 
 .imaga_box{
@@ -85,6 +89,118 @@ header{
     height: auto;
 }
 
+.circle_img{
+    width: 40px;
+    border-radius: 50%;
+    border: 3px solid blue;
+    float: left;
+    margin: auto;
+}
+
+.thread_title{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.thread_like{
+    border: 2px solid purple;
+}
+
+#thread{
+    width: inherit;
+    height: inherit;
+    border: 2px solid green;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.thread_date{
+    vertical-align: bottom;
+    float: right;
+    border: 4px solid red;
+    position: relative;
+}
+
+.views{
+    text-align: right;
+}
+.date{
+    float:right;
+}
+
+.bar1{
+    min-width: 600px;
+    height: 8px;
+    background-color: black;
+}
+
+.bar2{
+    min-width: 600px;
+    height: 4px;
+    background-color: grey;
+}
+
+.like_button{
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.forum_name{
+    font-size:40px;
+    font-weight: bold;
+}
+
+.thread_list{
+    width:inherit;
+    height: 60px;
+    border: 2px solid blue;
+}
+
+#board{
+
+}
+
+#forum{
+
+}
+
+.reply_button{
+    float: right;
+}
+
+.reply_box{
+    width:inherit;
+    height: 50px;
+    border: 2px solid red;
+}
+
+.reply_date{
+    float: right;
+}
+
+.thread_content_box{
+
+}
+.thread_article{
+    width: 500px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content{
+    min-width: 500px;
+    max-width: 900px;
+    min-height: 1200px;
+    max-height: 1300px;
+    margin: auto;
+}
+
 
 #content_box{
     display: grid;
@@ -138,11 +254,16 @@ header{
     width:inherit;
     height: 50px;
     border: 2px solid green;
+    background-color: wheat;
     text-align:center;
     vertical-align: middle;
-
 }
 
+.forum_box{
+    height: 60px;
+    font-size: 40px;
+    text-align: center;
+}
 
 footer{
     margin-left: auto;
@@ -152,49 +273,32 @@ footer{
     text-align: center;
 }
 
-@media (prefers-color-scheme: dark) {
-    .day.dark-scheme {
-        background: #333;
-        color: white;
-    }
-    .night.dark-scheme {
-        background: black;
-        color: #ddd;
-    }
-}
-  
-@media (prefers-color-scheme: light) {
-.day.light-scheme {
-    background: white;
-    color: #555;
-}
-.night.light-scheme {
-    background: #eee;
-    color: black;
-}
+.Create_Button{
+    float: right;
 }
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
-    background-color: #111;
-  }
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #333;
+}
+
+li {
+float: left;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+background-color: #111;
+}
