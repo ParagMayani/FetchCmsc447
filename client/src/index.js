@@ -4,11 +4,18 @@ import App from './layout.js'
 import Forum from './forum'
 import Thread from './thread'
 import Board from './board'
+import Footer from './footer'
+import Create from './create'
 
 const content = ReactDOM.createRoot(document.getElementById('content'));
 content.render(
   <React.StrictMode>
+    <Board/>
+    <Thread/>
     <Forum/>
+    <Create/>
+    <Footer/>
+    
   </React.StrictMode>
 );
 

@@ -8,7 +8,10 @@ function Forum(props){
     return (
         <section id='forum'>
             <div class='bar1'></div>
-            <div class='forum_name'>Sample</div>
+            <div class='forum_name'>
+                Sample
+                <a href='/createThread'><button class='create_button'> + </button></a>
+                </div>  
             <div class='bar1'></div>
 
             <div class='thread_list'>

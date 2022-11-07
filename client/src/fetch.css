@@ -150,6 +150,10 @@ header{
     margin-right: auto;
 }
 
+.create_button{
+    float:right;
+}
+
 .forum_name{
     font-size:40px;
     font-weight: bold;
