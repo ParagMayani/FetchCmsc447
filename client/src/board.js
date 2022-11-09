@@ -1,5 +1,5 @@
 import './fetch.css'
-import sample from './images/img_avatar.png'
+import sample from './images/temporary.png'
 
 function Board(props){
     return (

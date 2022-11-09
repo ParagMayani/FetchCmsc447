@@ -49,7 +49,7 @@ In hac habitasse platea dictumst. Maecenas rutrum ultricies lectus non maximus. 
             <button class="send_button">
                 Reply
             </button>
-      <p><textarea name="body" placeholder="Comment"></textarea></p>
+      <p><textarea class='reply_textarea' name="body" placeholder="Comment"></textarea></p>
       <p><input type="submit" value="Create"></input></p>
         </section>
         <section class = 'forum'>

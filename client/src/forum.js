@@ -7,12 +7,14 @@ function Forum(props){
     const lis = [];
     return (
         <section id='forum'>
-            <div class='bar1'></div>
+            
             <div class='forum_name'>
+            <div class='bar1'></div>
                 Sample Forum
                 <a href='/createThread'><button class='create_button'> + </button></a>
+                <div class='bar1'></div>
                 </div>  
-            <div class='bar1'></div>
+            
 
             <div class='thread_list'>
                 <a href= '/thread/{props.id}'>

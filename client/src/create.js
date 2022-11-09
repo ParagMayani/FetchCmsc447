@@ -2,11 +2,11 @@ import { useState } from 'react';
 import './fetch.css';
 import {useNavigate } from 'react-router';
 
+
 //ID|TITLE|DESCRIPTION
 //LIKES
 //CATEGORY|ACADEMIC, DESIRED_JOB,HOBBIES, MUSIC
 function Create(props){
-
     const [form, setForm] = useState({
         title: "",
         article: "",
@@ -34,10 +34,11 @@ function Create(props){
 
     return (
         <section class='create_thread'>
+            <p>Post Thread</p>
             <form action='./'>
-                <p><input class='create_thread_title' type="text" name="title" placeholder="title"/></p>
+                <p><input class='create_thread_title' type="text" name="title" placeholder="Title"/></p>
                 <p><textarea class='create_thread_description' name="description" placeholder="Description"></textarea></p>
-                <p class='create_thread_submit'><input  type="submit" value="Create"></input></p>
+                <p class='create_thread_submit'><input  type="submit" value="Post"></input></p>
             </form>
         </section>
     );
