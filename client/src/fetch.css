@@ -21,6 +21,7 @@ header{
     font-weight: bold;
     text-decoration: none;
     color: gold;
+    float: left;
 }
 
 .main_image{
@@ -32,19 +33,12 @@ header{
     width: 100px;
     height: 100px;
 }
-.nav_text{
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 60px;
-    height: 20px;
-    text-align: center;
-    vertical-align: middle;
-}
+
 
 #name_box{
     color: black;
     min-width: 600px;
-    max-width: 800px;
+    max-width: 100%;
     height: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -58,7 +52,7 @@ header{
 #top_nav{
     height: 40px;
     min-width: 600px;
-    max-width: 800px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -67,14 +61,22 @@ header{
 }
 
 .nav_box{
-    display: inline;
-    position: inherit;
-    margin: auto;
-    width: 60px;
-    height: 10px;
-    text-align: center;
+    display: inline-block;
+    min-width: 60px;
+    max-width: auto;
+    height: auto;
     font-size: 24px;
     vertical-align: middle;
+    background-color: grey;
+    margin: 5px;
+}
+
+.nav_text{
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
     color: white;
 }
 

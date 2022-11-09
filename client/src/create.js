@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './fetch.css';
 import {useNavigate } from 'react-router';
 
@@ -6,6 +6,26 @@ import {useNavigate } from 'react-router';
 //ID|TITLE|DESCRIPTION
 //LIKES
 //CATEGORY|ACADEMIC, DESIRED_JOB,HOBBIES, MUSIC
+
+class threadForm extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            value: ''
+        };
+    this.handleChange = this.handleChange(this);
+    this.handleSubmit = this.handleSubmit(this);
+    }
+    handleChange(event){
+        this.setState({value: event.target.value});
+    }
+    handleSubmit(event){
+        alert('An essay was submitted: ' + this.state.value);
+        event.preventDefault();
+    }
+}
+
+
 function Create(props){
     const [form, setForm] = useState({
         title: "",
