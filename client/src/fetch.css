@@ -176,6 +176,8 @@ header{
 
 }
 
+
+
 .reply_button{
     float: right;
 }
@@ -193,6 +195,36 @@ header{
 .thread_content_box{
 
 }
+
+.create_thread{
+    width: inherit;
+    height: auto;
+    border: 2px solid brown;
+    background-color: cornsilk;
+}
+
+.create_thread_title{
+    width: 99%;
+    height: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
+.create_thread_description{
+    width: 99%;
+    min-height: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
+.create_thread_submit{
+    text-align: right;
+}
+
 .thread_article{
     width: 500px;
     height: auto;

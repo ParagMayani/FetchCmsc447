@@ -34,10 +34,10 @@ function Create(props){
 
     return (
         <section class='create_thread'>
-            <form>
-                <p><input type="text" name="title" placeholder="title"/></p>
-                <p><textarea name="article" placeholder="Article"></textarea></p>
-                <p><input type="submit" value="Create"></input></p>
+            <form action='./'>
+                <p><input class='create_thread_title' type="text" name="title" placeholder="title"/></p>
+                <p><textarea class='create_thread_description' name="description" placeholder="Description"></textarea></p>
+                <p class='create_thread_submit'><input  type="submit" value="Create"></input></p>
             </form>
         </section>
     );
