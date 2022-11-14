@@ -14,12 +14,16 @@ const content = ReactDOM.createRoot(document.getElementById('content'));
 content.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Board/>
+    
+    
     <Thread/>
-    <Forum/>
-    <Create/>
-    <Create_Profile/>
     <Footer/>
+    <Board/>
+    
+    <Create/>
+    <Forum/>
+    <Create_Profile/>
+    
     </BrowserRouter>
   </React.StrictMode>
 );

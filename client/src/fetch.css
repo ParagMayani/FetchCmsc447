@@ -38,7 +38,7 @@ header{
 #name_box{
     color: black;
     min-width: 600px;
-    max-width: 100%;
+    max-width: 900px;
     height: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -52,7 +52,7 @@ header{
 #top_nav{
     height: 40px;
     min-width: 600px;
-    max-width: 100%;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -69,6 +69,7 @@ header{
     vertical-align: middle;
     background-color: grey;
     margin: 5px;
+    padding: 2px;
 }
 
 .nav_text{
@@ -202,7 +203,7 @@ header{
 }
 
 .thread_content_box{
-
+    width: inherit;
 }
 
 .create_thread{
@@ -245,11 +246,12 @@ header{
 }
 
 #content{
-    min-width: 500px;
+    min-width: 600px;
     max-width: 900px;
     min-height: 1200px;
     max-height: 1300px;
     margin: auto;
+    background-color: white;
 }
 
 
@@ -322,9 +324,11 @@ header{
 footer{
     margin-left: auto;
     margin-right: auto;
-    width: 600px;
+    min-width: 600px;
+    max-width: 900px;
     height: 100px;
     text-align: center;
+    background-color: white;
 }
 
 .Create_Button{
