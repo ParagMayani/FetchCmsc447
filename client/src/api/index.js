@@ -5,4 +5,4 @@ const createURL = 'https://localhost:5000/create'
 
 export const fecthPosts = () => axios.get(url);
 
-export const createPost = (newPost) => axios.post(createURL, newPost);
+export const createPost = (newPost) => axios.post(url, newPost);
