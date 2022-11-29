@@ -1,4 +1,4 @@
-import { CreateThread } from "../models/thread";
+import { CreateThread } from "../models/thread.js";
 
  export const getThreads = async (request, response) => {
     const post_number = request.payload;

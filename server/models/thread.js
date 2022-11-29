@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 
 const threadSchema = mongoose.Schema({
-    post_id: Schema.Types.ObjectId,
+    post:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CreatePost'
+    },
     comment: String,
     likes: {
         type: Number,
@@ -11,7 +14,10 @@ const threadSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    created_by : Schema.Types.ObjectId,
+    created_by: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CreateUser'
+    },
     created_on: {type: Date, default: Date.now}
 });
 

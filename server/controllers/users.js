@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { CreateUser } from "../models/user";
+import { CreateUser } from "../models/user.js";
 
 export const createUsers = async (request, response) => {
      const the_post = request.payload;

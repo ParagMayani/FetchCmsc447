@@ -1,4 +1,4 @@
-import { CreatePost } from "../models/post";
+import { CreatePost } from "../models/post.js";
 
  export const getPosts = async (request, response) => {
     const filters = request.payload;

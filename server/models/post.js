@@ -26,7 +26,10 @@ const postSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-    created_by: Schema.Types.ObjectId,
+    created_by: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CreateUser'
+    },
     created_on: {type: Date, default: Date.now}
 });
 
