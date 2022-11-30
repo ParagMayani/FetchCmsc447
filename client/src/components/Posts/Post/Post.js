@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const Post = () => {
+const Post = (data) => {
     return (
         <>
             <div className="bg-white border mt-2">

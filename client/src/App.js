@@ -10,16 +10,17 @@ import { getPosts } from './actions/posts';
 
 const App = () => {
     const dispatch = useDispatch();
-    //const [data, setData] = React.useState(null);
+    const [data, setData] = React.useState([]);
 
     useEffect(() => {
-        dispatch(getPosts());
+        console.log("UseEffect in APP.js");
+        setData(dispatch(getPosts()));
     }, [dispatch]);
+
     
     return(
         <>
         <h1>APP</h1>
-        <Form/>
         <Posts/>
         
         </>
