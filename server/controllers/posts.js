@@ -1,9 +1,9 @@
 import { CreatePost } from "../models/post.js";
 
  export const getPosts = async (request, response) => {
-    const filters = request.payload;
     try {
-        const all_posts = await CreatePost.findAll({academia: filters.academia, industry: filters.industry, hobbies: filters.hobbies, music: filters.music});
+        //const all_posts = await CreatePost.findOne({academia: filters.academia, industry: filters.industry, hobbies: filters.hobbies, music: filters.music});
+        const all_posts = await CreatePost.find(request.body);
         response.json(all_posts);
     }
     catch (error){
@@ -12,9 +12,8 @@ import { CreatePost } from "../models/post.js";
 }
 
  export const createPosts = async (request, response) => {
-     const the_post = request.payload;
-     const new_post = new CreatePost(the_post);
      try {
+         const new_post = new CreatePost(request.body);
          await new_post.save();
          response.status(201).json(new_post);
      }

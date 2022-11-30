@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
-    description: String,
+const postSchema = new mongoose.Schema({
+    description: {
+        type: String,
+        default: ''
+    },
     likes: {
         type: Number,
         default: 0
