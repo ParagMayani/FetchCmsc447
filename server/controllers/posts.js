@@ -4,7 +4,7 @@ import { CreatePost } from "../models/post.js";
     const filters = request.payload;
     console.log("getPosts")
     try {
-        const all_posts = await CreatePost.find();
+        const all_posts = await CreatePost.find().sort({created_on:-1});
         response.json(all_posts);
     }
     catch (error){
@@ -13,7 +13,8 @@ import { CreatePost } from "../models/post.js";
 }
 
  export const createPosts = async (request, response) => {
-     const the_post = request.payload;
+     const the_post = request.body;
+     console.log(the_post);
      const new_post = new CreatePost(the_post);
      try {
          await new_post.save();
