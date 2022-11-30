@@ -1,4 +1,4 @@
-export const ADD_THREAD = 'ADD_THREAD';
+export const CREATE_THREAD = 'CREATE_POST';
 export const EDIT_THREAD = 'EDIT_THREAD';
 export const DELETE_THREAD = 'DELETE_THREAD';
 

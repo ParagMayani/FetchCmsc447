@@ -1,8 +1,6 @@
 
-import {BrowserRouter, Route} from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 import './style.css';
 //import {}} from './components/thread';
 
@@ -12,7 +10,7 @@ import { getPosts } from './actions/posts';
 
 const App = () => {
     const dispatch = useDispatch();
-    const [data, setData] = React.useState(null);
+    //const [data, setData] = React.useState(null);
 
     useEffect(() => {
         dispatch(getPosts());

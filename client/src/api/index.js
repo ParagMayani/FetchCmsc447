@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const url = 'http://localhost:5000/posts';
-const createURL = 'https://localhost:5000/create'
+const url = 'http://localhost:5000/posts/get';
+const createURL = 'http://localhost:5000/posts/create'
 
 export const fecthPosts = () => axios.get(url);
 
-export const createPost = (newPost) => axios.post(url, newPost);
+export const createPost = (newPost) => axios.post(createURL, newPost);

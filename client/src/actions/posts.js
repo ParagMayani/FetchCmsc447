@@ -2,9 +2,10 @@ import * as api from '../api';
 
 export const getPosts = () => async(dispatch) => {
     try {
+        console.log("tryblock for getPosts");
         const {data } = await api.fecthPosts();
-
-        dispatch({tpye: 'FETCH_ALL', playload: data});
+        console.log("Check" + data);
+        dispatch({type: 'FETCH_ALL', payload: data});
     } catch (error){
         console.log(error.message);
     }
