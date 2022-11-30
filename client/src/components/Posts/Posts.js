@@ -15,7 +15,7 @@ const Posts = () => {
         <>
             <h1>POSTS</h1>
             {posts.map((post) =>
-                <Post post = {post}/> 
+                <Post post = {post} key={post._id}/> 
             )}
             
             
