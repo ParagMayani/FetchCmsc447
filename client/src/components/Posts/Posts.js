@@ -14,7 +14,11 @@ const Posts = () => {
     return (
         <>
             <h1>POSTS</h1>
-            <Post/>
+            {posts.map((post) =>
+                <Post post = {post}/> 
+            )}
+            
+            
         </>
         
     );
