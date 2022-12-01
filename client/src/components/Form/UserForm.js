@@ -3,19 +3,26 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../actions/posts";
 
+import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import useStyles from './styles';
+
 
 const UserForm = () => {
     const [postData, setPostData] = useState({
         firstName: '', lastName: '', age: '', major: '', studyYear: ''
     })
+    const classes = useStyles();
 
 
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(postData);
-        dispatch(createU(postData));
+        dispatch(createUser(postData));
+    }
+
+    const clear = () => {
+        setPostData({firstName: '', lastName: '', age: '', major: '', studyYear: ''});
     }
     return (
         <>
