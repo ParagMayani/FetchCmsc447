@@ -1,15 +1,17 @@
-import { CREATE_POST, EDIT_POST, DELETE_POST} from './ActionTypes';
+import { READ_POST, CREATE_THREAD, EDIT_THREAD, DELETE_THREAD} from './ActionTypes';
 
 
 export default (posts = [], action) => {
     switch(action.type) {
-        case 'FETCH_ALL':
+        case READ_POST:
             return action.payload;
-        case CREATE_POST:
+        case CREATE_THREAD:
             return [...posts, action.payload];
-        case EDIT_POST:
+
+            case EDIT_THREAD:
             return [...posts, action.payload];
-        case DELETE_POST:
+
+            case DELETE_THREAD:
             return [...posts, action.payload];
         default:
             return posts;

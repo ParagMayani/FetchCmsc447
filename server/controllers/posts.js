@@ -2,7 +2,6 @@ import { CreatePost } from "../models/post.js";
 
  export const getPosts = async (request, response) => {
     const filters = request.payload;
-    console.log("getPosts")
     try {
         const all_posts = await CreatePost.find().sort({created_on:-1});
         response.json(all_posts);

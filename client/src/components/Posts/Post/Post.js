@@ -1,16 +1,12 @@
 
 import React from "react";
-import Posts from "../Posts";
 
 const Post = ({post}) => {
-    var today = new Date;
+    var today = new Date();
     //const date = today.now() - post.created_on;
     var created = new Date(post.created_on);
-    var diff = new Date(today - created);
-    diff = diff.getTime();
     var seconds = (today - created )/ 1000;
     var minutes = (seconds)/ 60;
-    console.log(minutes);
     var hours = (minutes)/ 60;
     var days = (hours)/ 24;
     seconds = Math.round(seconds);
@@ -36,13 +32,13 @@ const Post = ({post}) => {
                             <div className="d-flex flex-column flex-wrap ml-2"><span className="text-black-50 time">{Timeline}</span></div>
                         </div>
                         <div className="dropdown show">
-                        <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a className="btn btn-secondary dropdown-toggle" href="/" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         </a>
 
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a className="dropdown-item" href="#">Action</a>
-                            <a className="dropdown-item" href="#">Another action</a>
-                            <a className="dropdown-item" href="#">Something else here</a>
+                            <a className="dropdown-item" href="/">Action</a>
+                            <a className="dropdown-item" href="/">Another action</a>
+                            <a className="dropdown-item" href="/">Something else here</a>
                         </div>
                         </div>
                     </div>

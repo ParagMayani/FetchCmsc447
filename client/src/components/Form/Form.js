@@ -3,7 +3,6 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createPost } from "../../actions/posts";
-import CreatableSelect  from 'react-select/creatable';
 const Form = () => {
     const [postData, setPostData] = useState({
         description: ''
