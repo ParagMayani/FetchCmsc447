@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useState,  useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './style.css';
 
@@ -9,6 +9,7 @@ import { getPosts } from './actions/posts';
 import UserForm from './components/Form/UserForm';
 
 const App = () => {
+    const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
     const [data, setData] = React.useState([]);
 
@@ -22,8 +23,8 @@ const App = () => {
         <>
         <h1>APP</h1>
         {/* <UserForm/> */}
-        <Form/>
-        <Posts/>
+        <Form currentId = {currentId} setCurrentID={setCurrentId}/>
+        <Posts setCurrentID={setCurrentId}/>
         
         </>
         

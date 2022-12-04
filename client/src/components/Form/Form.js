@@ -2,10 +2,10 @@
 
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import './formStyle.css';
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
     const [postData, setPostData] = useState({
         description: ''
     });
@@ -22,7 +22,14 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(postData);
-        dispatch(createPost(postData));
+
+        if(currentId){
+            dispatch(updatePost(currentId, postData));
+        } else {
+            dispatch(createPost(postData));
+        }
+        
+        
     }
     
     function refreshPage() {
@@ -33,7 +40,7 @@ const Form = () => {
             <h1>FORM</h1>
             <div >
                 <form id="postForm" autoComplete="on" onSubmit={handleSubmit} method="POST">
-                <input className="postForm-button" onClick={refreshPage} type="submit" value="Submit"><FontAwesomeIcon icon="fa-solid fa-turn-down-left" /></input>
+                <input className="postForm-button" onClick={refreshPage} type="submit" value="Submit"></input>
                     <textarea className="postForm-textarea" name="description" onChange={(e) => setPostData({ ...postData, description: e.target.value})}></textarea>
 
                     {/* <CreatableSelect isClearable options={options} name="category" onChange={(e) => setPostData({ ...postData, category: e.target.value})} /> */}

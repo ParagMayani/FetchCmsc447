@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 
 import Post from './Post/Post';
-const Posts = () => {
+const Posts = ({setCurrentId}) => {
     const posts = useSelector((state) => state.posts);
 
     //console.log(posts);
@@ -14,7 +14,7 @@ const Posts = () => {
         <>
             <h1>POSTS</h1>
             {posts.map((post) =>
-                <Post post = {post} key={post._id}/> 
+                <Post post = {post} key={post._id} setCurrentId={setCurrentId}/> 
             )}
             
             

@@ -1,7 +1,10 @@
 
 import React from "react";
+import { useDispatch } from "react-redux";
+import {deletePost, likePost} from '../../../actions/posts';
 
-const Post = ({post}) => {
+const Post = ({post, setCurrentId}) => {
+    const dispatch = useDispatch();
     var today = new Date();
     //const date = today.now() - post.created_on;
     var created = new Date(post.created_on);
@@ -43,7 +46,7 @@ const Post = ({post}) => {
                         </div>
                     </div>
                     <div className="feed-image p-2 px-3"><span>{post.description}</span></div>
-                    <div className="d-flex justify-content-end socials p-2 py-3"><button><i className="fa fa-arrow-up">{post.likes}</i></button><button><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
+                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(post))}><i className="fa fa-arrow-up">{post.likes}</i></button><button><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>
             </div>
         </>

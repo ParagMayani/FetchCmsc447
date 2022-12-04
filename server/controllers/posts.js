@@ -1,4 +1,5 @@
 import { CreatePost } from "../models/post.js";
+import mongoose from "mongoose";
 
  export const getPosts = async (request, response) => {
     const filters = request.payload;
@@ -24,11 +25,12 @@ import { CreatePost } from "../models/post.js";
      }
  }
 
- export const updatePosts = async (request, response) => {
-    const {id:_id} = request.params.postID;
-    const updatedBody = request.payload;
+ export const updatePosts = async (request, response) => {  
+    const id = request.body.postID
+    console.log(id);
+    const updatedBody = request.body;
     if (!mongoose.Types.ObjectId.isValid(_id)){
-        return (res.status(404).send("No post with that ID"));
+        return (response.status(404).send("No post with that ID"));
     }
     the_post = CreatePost.findById(_id);
     if(the_post.created.created_by === request.params.postID)
@@ -42,9 +44,10 @@ import { CreatePost } from "../models/post.js";
  }
 
  export const likePosts = async (request, response) => {
-    const id = request.params.postID;
+    const id  = request.body._id;
+    console.log(id);
     if (!mongoose.Types.ObjectId.isValid(id)){
-        return (res.status(404).send("No post with that ID"));
+        return (response.status(404).send("No post with that ID"));
     }
     const the_post = CreatePost.findById(id);
     const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : the_post.likes + 1}, {new: true});

@@ -6,11 +6,11 @@ const router = express.Router();
 
 router.get("/get", getPosts);
 router.post("/create", createPosts);
-router.patch("/update/:userID/:postID", updatePosts);
-router.patch("/update/like/:postID", likePosts);
-router.patch("/update/unlike/:postID", unlikePosts);
-router.patch("/update/dislike/:postID", dislikePosts);
-router.patch("/update/undislike/:postID", undislikePosts);
-router.delete("/delete/:userID/:postID", deletePosts);
+router.patch("/update/", updatePosts);
+router.patch("/update/like/", likePosts);
+router.patch("/update/unlike/", unlikePosts);
+router.patch("/update/dislike/", dislikePosts);
+router.patch("/update/undislike/", undislikePosts);
+router.delete("/delete/", deletePosts);
 
 export default router;
