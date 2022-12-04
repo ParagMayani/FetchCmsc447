@@ -1,8 +1,7 @@
 import { CreatePost } from "../models/post.js";
 import mongoose from "mongoose";
 
- export const getPosts = async (request, response) => {
-    const filters = request.payload;
+export const getAllPosts = async (request, response) => {
     try {
         const all_posts = await CreatePost.find().sort({created_on:-1});
         response.json(all_posts);
@@ -12,9 +11,24 @@ import mongoose from "mongoose";
     }
 }
 
+export const getFilteredPosts = async (request, response) => {
+    var filteredPosts = [];
+    var filters = request.body;
+    for (let i = 0; i < filters.types.length; i++) {
+        var type = filters.types[i];
+        try {
+            const filtered_post = await CreatePost.find({[type]: true}).sort({created_on:-1});
+            filteredPosts.push(filtered_post);
+        }
+        catch (error){
+            response.status(409).json({message: error.message});
+        }
+    }
+    response.status(201).json(filteredPosts);
+}
+
  export const createPosts = async (request, response) => {
      const the_post = request.body;
-     console.log(the_post);
      const new_post = new CreatePost(the_post);
      try {
          await new_post.save();
@@ -32,10 +46,9 @@ import mongoose from "mongoose";
     if (!mongoose.Types.ObjectId.isValid(_id)){
         return (response.status(404).send("No post with that ID"));
     }
-    the_post = CreatePost.findById(_id);
-    if(the_post.created.created_by === request.params.postID)
-    if (the_post.created.created_by === request.params.userID){
-        const updatedPost = await CreatePost.findByIdAndUpdate(_id, updatedBody, {new: true});
+    the_post = CreatePost.findById(id);
+    if (the_post.created.created_by === request.body.userID){
+        const updatedPost = await CreatePost.findByIdAndUpdate(id, updatedBody, {new: true});
         response.json(updatedPost);
     }
     else{
@@ -55,7 +68,7 @@ import mongoose from "mongoose";
  }
 
  export const unlikePosts = async (request, response) => {
-    const id = request.params.postID;
+    const id = request.body.postID;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
@@ -65,7 +78,7 @@ import mongoose from "mongoose";
  }
 
  export const dislikePosts = async (request, response) => {
-    const id = request.params.postID;
+    const id = request.body.postID;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
@@ -75,7 +88,7 @@ import mongoose from "mongoose";
  }
 
  export const undislikePosts = async (request, response) => {
-    const id = request.params.postID;
+    const id = request.body.postID;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
@@ -85,12 +98,12 @@ import mongoose from "mongoose";
  }
 
  export const deletePosts = async (request, response) => {
-    const {id:_id} = request.params.postID;
-    if (!mongoose.Types.ObjectId.isValid(_id)){
+    const id = request.body.postID;
+    if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
-    const the_post = CreatePost.findByIdAndRemove(_id);
-    if (the_post.created.created_by === request.params.userID){
+    const the_post = CreatePost.findByIdAndRemove(id);
+    if (the_post.created.created_by === request.body.userID){
         await CreatePost.findByIdAndRemove(_id);
         response.json({message: "Post deleted successfully."});
     }

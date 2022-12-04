@@ -1,9 +1,9 @@
 import { CreateThread } from "../models/thread.js";
 
  export const getThreads = async (request, response) => {
-    const post_number = request.payload;
+    const post = request.body;
     try {
-        const all_threads = await CreateThread.findAll({post_id: post_number});
+        const all_threads = await CreateThread.find({post_id: post.postID}).sort({created_on:-1});
         response.json(all_threads);
     }
     catch (error){
@@ -12,7 +12,7 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const createThreads = async (request, response) => {
-     const the_thread = request.payload;
+     const the_thread = request.body;
      const new_thread = new CreateThread(the_thread);
      try {
          await new_thread.save();
@@ -24,14 +24,14 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const updateThreads = async (request, response) => {
-    const {id:_id} = request.params.threadID;
+    const id = request.body.threadID;
     const updatedBody = request.payload;
-    if (!mongoose.Types.ObjectId.isValid(_id)){
+    if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
     const the_thread = CreateThread.findById(_id);
-    if (the_thread.created_by === request.params.userID){
-        const updatedThread = await CreateThread.findByIdAndUpdate(_id, updatedBody, {new: true});
+    if (the_thread.created_by === request.body.userID){
+        const updatedThread = await CreateThread.findByIdAndUpdate(id, updatedBody, {new: true});
         response.json(updatedThread);
     }
     else{
@@ -40,7 +40,7 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const likeThreads = async (request, response) => {
-    const id = request.params.threadID;
+    const id = request.body.threadID;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
@@ -50,9 +50,9 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const unlikeThreads = async (request, response) => {
-    const id = request.params.threadID;
+    const id = request.body.threadID;
     if (!mongoose.Types.ObjectId.isValid(id)){
-        return (res.status(404).send("No post with that ID"));
+        return (res.status(404).send("No thread with that ID"));
     }
     const the_thread = CreateThread.findById(id);
     const unlikedThread = await CreatePost.findByIdAndUpdate(id, {likes : the_thread.likes - 1}, {new: true});
@@ -60,9 +60,9 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const dislikeThreads = async (request, response) => {
-    const id = request.params.threadID;
+    const id = request.body.threadID;
     if (!mongoose.Types.ObjectId.isValid(id)){
-        return (res.status(404).send("No post with that ID"));
+        return (res.status(404).send("No thread with that ID"));
     }
     const the_thread = CreateThread.findById(id);
     const dislikedThread = await CreateThread.findByIdAndUpdate(id, {dislikes : the_thread.dislikes + 1}, {new: true});
@@ -70,9 +70,9 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const undislikeThreads = async (request, response) => {
-    const id = request.params.threadID;
+    const id = request.body.threadID;
     if (!mongoose.Types.ObjectId.isValid(id)){
-        return (res.status(404).send("No post with that ID"));
+        return (res.status(404).send("No thread with that ID"));
     }
     const the_thread = CreateThread.findById(id);
     const undislikedThread = await CreateThread.findByIdAndUpdate(id, {dislikes : the_thread.dislikes - 1}, {new: true});
@@ -80,14 +80,14 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const deleteThreads = async (request, response) => {
-    const {id:_id} = request.params.threadID;
-    if (!mongoose.Types.ObjectId.isValid(_id)){
-        return (res.status(404).send("No post with that ID"));
+    const threadId = request.body.threadID;
+    if (!mongoose.Types.ObjectId.isValid(threadId)){
+        return (res.status(404).send("No thread with that ID"));
     }
-    const the_thread = CreateThread.findById(_id);
-    if (the_thread.created_by === request.params.userID){
-        await CreatePost.findByIdAndRemove(_id);
-        response.json({message: "Post deleted successfully."});
+    const the_thread = CreateThread.findById(threadId);
+    if (the_thread.created_by === request.body.userID){
+        await CreatePost.findByIdAndRemove(threadId);
+        response.json({message: "Thread deleted successfully."});
     }
     else{
         return (res.status(404).send("Invalid User"));

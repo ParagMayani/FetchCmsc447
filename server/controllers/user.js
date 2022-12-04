@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { CreateUser } from "../models/user.js";
 
 export const createUsers = async (request, response) => {
-     const the_post = request.payload;
+     const the_post = request.body;
      const new_user = new CreateUser(the_post);
      try {
          await new_user.save();
@@ -14,8 +14,8 @@ export const createUsers = async (request, response) => {
 }
 
 export const updateUsers = async (request, response) => {
-    const {id:_id} = request.params;
-    const updatedBody = request.payload;
+    const {id:_id} = request.body;
+    const updatedBody = request.body;
     if (!mongoose.Types.ObjectId.isValid(_id)){
         return (res.status(404).send("No user with that ID"));
     }
@@ -24,7 +24,7 @@ export const updateUsers = async (request, response) => {
 }
 
 export const removeUsers = async (request, response) => {
-    const {id:_id} = request.params;
+    const {id:_id} = request.body;
     if (!mongoose.Types.ObjectId.isValid(_id)){
         return (res.status(404).send("No user with that ID"));
     }
