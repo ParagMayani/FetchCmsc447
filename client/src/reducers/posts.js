@@ -1,9 +1,9 @@
-import { CREATE_POST, EDIT_POST, DELETE_POST, LIKE_POST} from './ActionTypes';
+import { READ_POST, CREATE_POST, EDIT_POST, DELETE_POST, LIKE_POST} from './ActionTypes';
 
 
 export default (posts = [], action) => {
     switch(action.type) {
-        case 'FETCH_ALL':
+        case READ_POST:
             return action.payload;
         case CREATE_POST:
             return [...posts, action.payload];

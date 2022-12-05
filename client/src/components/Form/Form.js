@@ -32,7 +32,7 @@ const Form = ({currentId, setCurrentId}) => {
     }
     
     function refreshPage() {
-        window.location.reload(false);
+        // window.location.reload(false);
     }
     return (
         <>

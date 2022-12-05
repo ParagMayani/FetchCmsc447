@@ -27,8 +27,6 @@ const UserForm = () => {
         <>
         <Paper>
             <form autoComplete = "off" onSubmit={handleSubmit}>
-                <Typography variant="h6">Creating a Memory</Typography>
-               
                 <TextField
                     name="firstname"
                     variant="outlined"

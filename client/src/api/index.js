@@ -8,7 +8,7 @@ const userURL = 'http://localhost:5000/users/';
 const threadURL = 'http://localhost:5000/threads/';
 
 
-export const fecthPosts = () => axios.get( postURL + 'get');
+export const getPosts = () => axios.get( postURL + 'get');
 export const filterPosts = (filter) => axios.get(postURL + 'get', filter);
 
 export const createPost = (newPost) => axios.post((postURL + 'create'), newPost);

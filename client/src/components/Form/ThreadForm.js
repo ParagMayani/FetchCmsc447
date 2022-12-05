@@ -10,13 +10,6 @@ const ThreadForm = ({post_id, currentId, setCurrentId}) => {
         post_id: post_id
     });
 
-    const options = [
-        { value: 'academia', label: 'academia' },
-        { value: 'hobby', label: 'hobby' },
-        { value: 'industry', label: 'industry' },
-        { value: 'music', label: 'music'},
-      ]
-
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
@@ -35,6 +28,8 @@ const ThreadForm = ({post_id, currentId, setCurrentId}) => {
     function refreshPage() {
         window.location.reload(false);
     }
+
+    console.log(post_id);
     return (
         <>
             <h1>THREAD FORM</h1>
@@ -44,7 +39,7 @@ const ThreadForm = ({post_id, currentId, setCurrentId}) => {
 
                     {/* <CreatableSelect isClearable options={options} name="category" onChange={(e) => setPostData({ ...postData, category: e.target.value})} /> */}
                     {/* <input type="hidden" name="userID" onChange={(e) => setPostData({ ...postData, userID: e.target.value})}></input> */}
-                    <input className="threadForm-button" onClick={refreshPage} type="submit" value="Submit"></input>
+                    <input className="threadForm-button" type="submit" value="Submit"></input>
                     
                 </form>
             </div>
