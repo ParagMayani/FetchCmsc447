@@ -7,11 +7,9 @@ export default (posts = [], action) => {
             return action.payload;
         case CREATE_THREAD:
             return [...posts, action.payload];
-
-            case EDIT_THREAD:
+        case EDIT_THREAD:
             return [...posts, action.payload];
-
-            case DELETE_THREAD:
+        case DELETE_THREAD:
             return [...posts, action.payload];
         default:
             return posts;

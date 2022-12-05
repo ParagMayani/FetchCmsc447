@@ -23,7 +23,7 @@ export const createUser = (newUser) => axios.post((userURL + 'create'), newUser)
 export const updateUser = (user) => axios.patch((userURL + 'update'), user);
 export const deleteUser = (user) => axios.delete((userURL + 'delete'), user);
 
-export const readThread = (post) => axios.get(threadURL + 'get', post);
+export const getThread = (post) => axios.get(threadURL + 'get', post);
 export const createThread = (newThread) => axios.post((threadURL + 'create'), newThread);
 export const updateThread = (thread) => axios.patch((threadURL + 'update'), thread);
 export const likeThread = (thread) => axios.patch((threadURL + 'update/like'), thread);

@@ -1,9 +1,10 @@
+import { copyFileSync } from 'fs';
 import * as api from '../api';
 
-export const getThreads = () => async(dispatch) => {
+export const getThreads = (post) => async(dispatch) => {
     try {
-        console.log("tryblock for getPosts");
-        const {data } = await api.fecthPosts();
+        console.log("tryblock for getThreads");
+        const {data } = await api.getThread(post);
         console.log(data);
         dispatch({type: 'FETCH_ALL', payload: data});
     } catch (error){

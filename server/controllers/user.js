@@ -3,6 +3,7 @@ import { CreateUser } from "../models/user.js";
 
 export const createUsers = async (request, response) => {
      const the_post = request.body;
+     console.log(the_post);
      const new_user = new CreateUser(the_post);
      try {
          await new_user.save();

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const threadSchema = mongoose.Schema({
     post_id: mongoose.Schema.Types.ObjectId,
-    comment: String,
+    description: String,
     likes: {
         type: Number,
         default: 0

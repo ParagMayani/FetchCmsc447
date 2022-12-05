@@ -2,11 +2,12 @@
 
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { createPost, updatePost } from "../../actions/posts";
 import './formStyle.css';
-const Form = ({currentId, setCurrentId}) => {
-    const [postData, setPostData] = useState({
-        description: ''
+import { createThread, updateThread } from "../../api";
+const ThreadForm = ({post_id, currentId, setCurrentId}) => {
+    const [threadData, setThreadData] = useState({
+        description: '',
+        post_id: post_id
     });
 
     const options = [
@@ -20,12 +21,12 @@ const Form = ({currentId, setCurrentId}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(postData);
+        console.log(threadData);
 
         if(currentId){
-            dispatch(updatePost(currentId, postData));
+            dispatch(updateThread(currentId, threadData));
         } else {
-            dispatch(createPost(postData));
+            dispatch(createThread(threadData));
         }
         
         
@@ -36,15 +37,14 @@ const Form = ({currentId, setCurrentId}) => {
     }
     return (
         <>
-            <h1>FORM</h1>
+            <h1>THREAD FORM</h1>
             <div >
-                <form id="postForm" autoComplete="on" onSubmit={handleSubmit} method="POST">
-                
-                    <textarea className="postForm-textarea" name="description" onChange={(e) => setPostData({ ...postData, description: e.target.value})}></textarea>
+                <form id="threadForm" autoComplete="on" onSubmit={handleSubmit} method="POST">
+                    <textarea className="threadForm-textarea" name="description" onChange={(e) => setThreadData({ ...threadData, description: e.target.value})}></textarea>
 
                     {/* <CreatableSelect isClearable options={options} name="category" onChange={(e) => setPostData({ ...postData, category: e.target.value})} /> */}
                     {/* <input type="hidden" name="userID" onChange={(e) => setPostData({ ...postData, userID: e.target.value})}></input> */}
-                    <input className="postForm-button" onClick={refreshPage} type="submit" value="Submit"></input>
+                    <input className="threadForm-button" onClick={refreshPage} type="submit" value="Submit"></input>
                     
                 </form>
             </div>
@@ -55,4 +55,4 @@ const Form = ({currentId, setCurrentId}) => {
     );
 }
 
-export default Form;
+export default ThreadForm;
