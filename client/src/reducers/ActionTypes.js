@@ -14,4 +14,5 @@ export const DELETE_THREAD = 'DELETE_THREAD';
 export const READ_POST = 'READ_POST';
 
 export const LIKE_POST = 'LIKE_POST';
+export const DISLIKE_POST = 'DISLIKE_POST';
 export const LIKE_THREAD = 'LIKE_THREAD';

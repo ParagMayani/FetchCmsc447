@@ -29,7 +29,7 @@ import { CreateThread } from "../models/thread.js";
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
-    const the_thread = CreateThread.findById(_id);
+    const the_thread = await CreateThread.findById(_id);
     if (the_thread.created_by === request.body.userID){
         const updatedThread = await CreateThread.findByIdAndUpdate(id, updatedBody, {new: true});
         response.json(updatedThread);
@@ -44,7 +44,7 @@ import { CreateThread } from "../models/thread.js";
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
-    const the_thread = CreateThread.findById(id);
+    const the_thread = await CreateThread.findById(id);
     const likedThread = await CreateThread.findByIdAndUpdate(id, {likes : the_thread.likes + 1}, {new: true});
     response.json(likedThread);
  }
@@ -54,7 +54,7 @@ import { CreateThread } from "../models/thread.js";
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
-    const the_thread = CreateThread.findById(id);
+    const the_thread = await CreateThread.findById(id);
     const unlikedThread = await CreatePost.findByIdAndUpdate(id, {likes : the_thread.likes - 1}, {new: true});
     response.json(unlikedThread);
  }
@@ -64,7 +64,7 @@ import { CreateThread } from "../models/thread.js";
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
-    const the_thread = CreateThread.findById(id);
+    const the_thread = await CreateThread.findById(id);
     const dislikedThread = await CreateThread.findByIdAndUpdate(id, {dislikes : the_thread.dislikes + 1}, {new: true});
     response.json(dislikedThread);
  }
@@ -74,7 +74,7 @@ import { CreateThread } from "../models/thread.js";
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
-    const the_thread = CreateThread.findById(id);
+    const the_thread = await CreateThread.findById(id);
     const undislikedThread = await CreateThread.findByIdAndUpdate(id, {dislikes : the_thread.dislikes - 1}, {new: true});
     response.json(undislikedThread);
  }
@@ -84,7 +84,7 @@ import { CreateThread } from "../models/thread.js";
     if (!mongoose.Types.ObjectId.isValid(threadId)){
         return (res.status(404).send("No thread with that ID"));
     }
-    const the_thread = CreateThread.findById(threadId);
+    const the_thread = await CreateThread.findById(threadId);
     if (the_thread.created_by === request.body.userID){
         await CreatePost.findByIdAndRemove(threadId);
         response.json({message: "Thread deleted successfully."});

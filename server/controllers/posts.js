@@ -40,7 +40,7 @@ export const getFilteredPosts = async (request, response) => {
  }
 
  export const updatePosts = async (request, response) => {  
-    const id = request.body.postID
+    const id = request.body._id;
     console.log(id);
     const updatedBody = request.body;
     if (!mongoose.Types.ObjectId.isValid(_id)){
@@ -62,8 +62,8 @@ export const getFilteredPosts = async (request, response) => {
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (response.status(404).send("No post with that ID"));
     }
-    const the_post = CreatePost.findById(id);
-    const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : the_post.likes + 1}, {new: true});
+    const the_post = await CreatePost.findById(id);
+    const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : (the_post.likes + 1)}, {new: true});
     response.json(likedPost);
  }
 
@@ -72,17 +72,17 @@ export const getFilteredPosts = async (request, response) => {
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
-    const the_post = CreatePost.findById(id);
+    const the_post = await CreatePost.findById(id);
     const unlikedPost = await CreatePost.findByIdAndUpdate(id, {likes : the_post.likes - 1}, {new: true});
     response.json(unlikedPost);
  }
 
  export const dislikePosts = async (request, response) => {
-    const id = request.body.postID;
+    const id = request.body._id;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
-    const the_post = CreatePost.findById(id);
+    const the_post = await CreatePost.findById(id);
     const dislikedPost = await CreatePost.findByIdAndUpdate(id, {dislikes : the_post.dislikes + 1}, {new: true});
     response.json(dislikedPost);
  }
@@ -92,7 +92,7 @@ export const getFilteredPosts = async (request, response) => {
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
-    const the_post = CreatePost.findById(id);
+    const the_post = await CreatePost.findById(id);
     const undislikedPost = await CreatePost.findByIdAndUpdate(id, {dislikes : the_post.dislikes - 1}, {new: true});
     response.json(undislikedPost);
  }

@@ -1,6 +1,6 @@
 import * as api from '../api';
 
-export const getPosts = () => async(dispatch) => {
+export const getThreads = () => async(dispatch) => {
     try {
         console.log("tryblock for getPosts");
         const {data } = await api.fecthPosts();
@@ -12,29 +12,29 @@ export const getPosts = () => async(dispatch) => {
     }
 }
 
-export const createPost = (post) => async(dispatch) => {
+export const createThread = (post) => async(dispatch) => {
     try {
         const {data } = await api.createPost(post);
-        dispatch({ type: 'CREATE_POST', payload: data});
+        dispatch({ type: 'CREATE_THREAD', payload: data});
     } catch (error) {
         console.log(error.message);
     }
 }
 
-export const updatePost = (id, post) => async(dispatch) => {
+export const updateThread = (id, post) => async(dispatch) => {
     try{
         const {data } = await api.updatePost(id, post);
 
-        dispatch({type: 'EDIT_POST', payload: data});
+        dispatch({type: 'EDIT_THREAD', payload: data});
     } catch (error) {
         console.log(error.message);
     }
 }
 
-export const deletePost = (id) => async(dispatch) => {
+export const deleteThread = (id) => async(dispatch) => {
     try {
         await api.deletePost(id);
-        dispatch({ type: 'DELETE_POST', payload: id});
+        dispatch({ type: 'DELETE_THREAD', payload: id});
     } catch (error) {
         console.log(error.message);
     }
@@ -45,7 +45,7 @@ export const likePost = (post) => async(dispatch) => {
         console.log(post);
         const {data } = await api.likePost(post);
         
-        dispatch({type: 'LIKE_POST', payload: data});
+        dispatch({type: 'LIKE_THREAD', payload: data});
     } catch (error){
         console.log(error.message);
     }
@@ -56,9 +56,17 @@ export const dislikePost = (post) => async(dispatch) => {
         console.log(post);
         const {data } = await api.dislikePost(post);
         
-        dispatch({type: 'DISLIKE_POST', payload: data});
+        dispatch({type: 'DISLIKE_THREAD', payload: data});
     } catch (error){
         console.log(error.message);
     }
 }
 
+export const createUser = (user) => async(dispatch) => {
+    try{
+        const {data} = await api.createUser(user);
+        dispatch({type: 'CREATE_THREAD', payload: data});
+    } catch (error) {
+        console.log(error.message)
+    }
+}
