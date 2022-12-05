@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
     age: {type: Number, min: 17, max: 23},
     major: String,
     study_year: String,
-    user_name: String,
+    username: String,
     password: String
 });
 

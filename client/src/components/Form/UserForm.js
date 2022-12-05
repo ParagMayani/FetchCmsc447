@@ -8,7 +8,7 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 
 const UserForm = () => {
     const [postData, setPostData] = useState({
-        firstname: '', lastname: '', age: '', major: '', study_year: ''
+        firstname: '', lastname: '', age: '', major: '', study_year: '', username: '', password: ''
     })
 
 
@@ -21,7 +21,7 @@ const UserForm = () => {
     }
 
     const clear = () => {
-        setPostData({firstname: '', lastname: '', age: '', major: '', study_year: ''});
+        setPostData({firstname: '', lastname: '', age: '', major: '', study_year: '', username: '', password: ''});
     }
     return (
         <>
@@ -70,6 +70,24 @@ const UserForm = () => {
                     fullWidth 
                     value={postData.study_year}
                     onChange={(e) => setPostData({ ...postData, study_year: e.target.value })}
+                />
+
+                <TextField
+                    name="username"
+                    variant="outlined"
+                    label="User Name"
+                    fullWidth 
+                    value={postData.user_name}
+                    onChange={(e) => setPostData({ ...postData, username: e.target.value })}
+                />
+
+                <TextField
+                    name="password"
+                    variant="outlined"
+                    label="Password"
+                    fullWidth 
+                    value={postData.password}
+                    onChange={(e) => setPostData({ ...postData, password: e.target.value })}
                 />
 
                 <Button variant="container" color="primary" size="large" type="submit" fullWidth>Submit</Button>
