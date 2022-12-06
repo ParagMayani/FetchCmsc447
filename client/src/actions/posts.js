@@ -11,6 +11,17 @@ export const getPosts = () => async(dispatch) => {
     }
 }
 
+export const filterPosts = (post) => async(dispatch) => {
+    try {
+        console.log("tryblock for getFilterPosts");
+        const {data } = await api.filterPosts(post);
+        dispatch({type: 'FILTER_POST', payload: data});
+    } catch (error){
+        console.log(error.message);
+        
+    }
+}
+
 export const createPost = (post) => async(dispatch) => {
     try {
         const {data } = await api.createPost(post);

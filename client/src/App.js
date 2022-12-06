@@ -10,6 +10,7 @@ import { getPosts } from './actions/posts';
 import UserForm from './components/Form/UserForm';
 import Threads from './components/Threads/Threads';
 import ThreadForm from './components/Form/ThreadForm';
+import LoginForm from './components/Form/LoginForm';
 import Post from './components/Posts/Post/Post';
 
 
@@ -20,7 +21,7 @@ const App = () => {
             <Routes>
                 <Route path ="/"/>
                 <Route path ="/sign_up" element={<UserForm/>}/>
-                <Route path ="/log_in" element={<UserForm/>}/>
+                <Route path ="/log_in" element={<LoginForm/>}/>
                 <Route path ="/posts" element={
                     <>
                         <Form/>

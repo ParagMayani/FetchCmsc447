@@ -4,7 +4,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getPosts } from "../../api";
+import { getPosts } from "../../actions/posts";
 
 
 import Post from './Post/Post';
@@ -17,7 +17,7 @@ const Posts = () => {
 
     useEffect(() => {
         setData(dispatch(getPosts()));
-    }, [dispatch]);
+    }, []);
 
     //console.log(posts);
     return (

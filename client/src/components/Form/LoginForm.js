@@ -6,7 +6,7 @@ import { createUser } from "../../actions/users";
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 
 
-const UserForm = () => {
+const LoginForm = () => {
     const [postData, setPostData] = useState({
         firstname: '', lastname: '', age: '', major: '', study_year: '', username: '', password: ''
     })
@@ -61,4 +61,4 @@ const UserForm = () => {
 
 
 
-export default UserForm;
+export default LoginForm;
