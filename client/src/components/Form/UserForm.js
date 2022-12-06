@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../actions/users";
+import md5 from 'md5-hash'
 
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 
@@ -16,6 +17,12 @@ const UserForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        var hashed=md5(postData.password);
+        setPostData({ ...postData, password: '1'});
+        console.log(postData.password);
+        console.log(md5(postData.password));
+        
         dispatch(createUser(postData));
         console.log(postData);
     }
@@ -87,6 +94,7 @@ const UserForm = () => {
                     label="Password"
                     fullWidth 
                     value={postData.password}
+                    type="password"
                     onChange={(e) => setPostData({ ...postData, password: e.target.value })}
                 />
 

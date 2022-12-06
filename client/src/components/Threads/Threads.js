@@ -1,9 +1,10 @@
 
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getThreads } from "../../actions/threads";
 import { filterPosts, getPosts } from "../../api";
 import ThreadForm from "../Form/ThreadForm";
 import Post from "../Posts/Post/Post";
@@ -11,16 +12,25 @@ import Post from "../Posts/Post/Post";
 
 import Thread from './Thread/Thread';
 const Threads = ({setCurrentId}) => {
-    const threads = useSelector((state) => state.threads);
-    const dispatch = useDispatch();
+    const [data, setData] = React.useState([]);
     const post_id = useParams();
-    console.log(post_id);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        console.log("UseEffect in Thread.js");
+        console.log(post_id);
+        setData(dispatch(getThreads(post_id)));
+        
+    }, [dispatch]);
+
+    const threads = useSelector((state) => state.threads);
+    console.log(data);
+    
 
     // const post = dispatch(filterPosts(post_id));
     return (
         <>
-            {/* <Post post={post_id}/> */}
-            <ThreadForm post_id = {post_id}/>
+            <Post key={post_id} setCurrentId={setCurrentId}/>
+                <ThreadForm/>
             <h1>THREADS</h1>
             {threads.map((thread) =>
                 <Thread thread = {thread} key={thread._id} setCurrentId={setCurrentId}/> 

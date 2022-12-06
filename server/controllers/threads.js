@@ -3,7 +3,6 @@ import { CreateThread } from "../models/thread.js";
  export const getThreads = async (request, response) => {
     console.log("GetThreads");
     const post = request.body;
-    console.log(post.post_id);
     try {
         const all_threads = await CreateThread.find({post_id: post.post_id}).sort({created_on:-1});
         response.json(all_threads);

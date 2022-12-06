@@ -4,8 +4,8 @@ import * as api from '../api';
 export const getThreads = (post) => async(dispatch) => {
     try {
         console.log("tryblock for getThreads");
+        console.log(post);
         const { data } = await api.getThread(post);
-        console.log(data);
         dispatch({type: 'READ_THREAD', payload: data});
     } catch (error){
         console.log(error.message);

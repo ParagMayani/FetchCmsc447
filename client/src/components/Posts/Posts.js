@@ -1,13 +1,23 @@
 
 
 import React from "react";
+import { useState, useEffect } from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getPosts } from "../../api";
 
 
 import Post from './Post/Post';
-const Posts = ({setCurrentId}) => {
+const Posts = () => {
+    const [currentId, setCurrentId] = useState(null);
+    const dispatch = useDispatch();
+    const [data, setData] = useState([]);
+    
     const posts = useSelector((state) => state.posts);
+
+    useEffect(() => {
+        setData(dispatch(getPosts()));
+    }, [dispatch]);
 
     //console.log(posts);
     return (

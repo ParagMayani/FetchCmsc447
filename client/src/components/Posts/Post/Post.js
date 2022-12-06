@@ -3,9 +3,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import {deletePost, likePost, dislikePost } from '../../../actions/posts';
 import { getThreads } from '../../../actions/threads';
+import { filterPosts, getPosts } from "../../../api";
 
 const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
+    //const data = dispatch(filterPosts(post));
+    //console.log(data._id);
     var liked = false;
     var disliked = false;
     var today = new Date();

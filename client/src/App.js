@@ -9,28 +9,28 @@ import Form from './components/Form/Form';
 import { getPosts } from './actions/posts';
 import UserForm from './components/Form/UserForm';
 import Threads from './components/Threads/Threads';
+import ThreadForm from './components/Form/ThreadForm';
+import Post from './components/Posts/Post/Post';
 
 
 const App = () => {
-    const [currentId, setCurrentId] = useState(null);
-    const dispatch = useDispatch();
-    const [data, setData] = React.useState([]);
-
-    useEffect(() => {
-        console.log("UseEffect in APP.js");
-        setData(dispatch(getPosts()));
-    }, [dispatch]);
-
-    
     return(
         <>
         <BrowserRouter>
             <Routes>
-                <Route path ="/" element={<Form currentId = {currentId} setCurrentID={setCurrentId}/>}>
-                </Route>
-                <Route path ="/sign_in" element={<UserForm currentId = {currentId} setCurrentID={setCurrentId}/>}/>
-                <Route path ="/posts" element={<Posts setCurrentID={setCurrentId}/>}/>
-                <Route path ="/threads/:post_id" element={<Threads setCurrentID={setCurrentId}/>}/>
+                <Route path ="/"/>
+                <Route path ="/sign_up" element={<UserForm/>}/>
+                <Route path ="/log_in" element={<UserForm/>}/>
+                <Route path ="/posts" element={
+                    <>
+                        <Form/>
+                        <Posts/>
+                    </>
+                }/>
+                <Route path ="/threads/:post_id" element={
+                <>
+                    <Threads/>
+                </>}/>
             </Routes>
         </BrowserRouter>
         

@@ -4,10 +4,10 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import './formStyle.css';
 import { createThread, updateThread } from "../../api";
-const ThreadForm = ({post_id, currentId, setCurrentId}) => {
+const ThreadForm = ({post, currentId, setCurrentId}) => {
     const [threadData, setThreadData] = useState({
         description: '',
-        post_id: post_id
+        post_id: post._id
     });
 
     const dispatch = useDispatch();
@@ -29,7 +29,6 @@ const ThreadForm = ({post_id, currentId, setCurrentId}) => {
         window.location.reload(false);
     }
 
-    console.log(post_id);
     return (
         <>
             <h1>THREAD FORM</h1>

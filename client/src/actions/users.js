@@ -9,3 +9,13 @@ export const createUser = (user) => async(dispatch) => {
         console.log(error.message)
     }
 }
+
+export const updateUser = (id, post) => async(dispatch) => {
+    try{
+        const {data } = await api.updateUser(id, post);
+
+        dispatch({type: 'EDIT_USER', payload: data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
