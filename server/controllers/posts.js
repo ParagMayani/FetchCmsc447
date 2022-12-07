@@ -12,13 +12,8 @@ export const getAllPosts = async (request, response) => {
 }
 
 export const getFilteredPostById = async (request, response) => {
-    console.log("filteredPostById");
     var filteredPosts = [];
-    var filters = request.params;
-    if(filters != null){
-        console.log("filters is not null");
-        console.log(filters);
-    }
+    var filters = request.params;    
     var type = Object.keys(filters);
     var filter = filters[type];
     try {
@@ -66,7 +61,6 @@ export const getFilteredPostByCategory = async (request, response) => {
 
  export const updatePosts = async (request, response) => {  
     const id = request.body._id;
-    console.log(id);
     const updatedBody = request.body;
     if (!mongoose.Types.ObjectId.isValid(_id)){
         return (response.status(404).send("No post with that ID"));

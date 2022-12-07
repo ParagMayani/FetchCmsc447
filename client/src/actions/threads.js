@@ -3,7 +3,6 @@ import * as api from '../api';
 export const getThreads = (post) => async(dispatch) => {
     try {
         console.log("tryblock for getThreads");
-        console.log(post);
         const { data } = await api.getThread(post);
         dispatch({type: 'READ_THREAD', payload: data});
     } catch (error){
@@ -40,21 +39,20 @@ export const deleteThread = (id) => async(dispatch) => {
     }
 }
 
-export const likePost = (post) => async(dispatch) => {
+export const likeThread = (thread) => async(dispatch) => {
     try{
-        console.log(post);
-        const {data } = await api.likeThread(post);
-        
+        console.log(thread);
+        const {data } = await api.likeThread(thread);
         dispatch({type: 'LIKE_THREAD', payload: data});
     } catch (error){
         console.log(error.message);
     }
 }
 
-export const dislikePost = (post) => async(dispatch) => {
+export const dislikeThread = (thread) => async(dispatch) => {
     try{
-        console.log(post);
-        const {data } = await api.dislikeThread(post);
+        console.log(thread);
+        const {data } = await api.dislikeThread(thread);
         
         dispatch({type: 'DISLIKE_THREAD', payload: data});
     } catch (error){

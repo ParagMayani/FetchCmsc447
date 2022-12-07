@@ -11,14 +11,39 @@ import Post from "../Posts/Post/Post";
 
 
 import Thread from './Thread/Thread';
+
+const Origin = () => {
+    const dispatch = useDispatch();
+    var [data, setData] = useState();
+
+    const postID = useParams().post_id;
+
+    const posts = useSelector((state) => state.posts);
+
+    var filter = {
+        _id: postID,
+        category: ''
+    }
+
+    useEffect(() => {
+        console.log("UseEffect in  origin of Threads.js");
+        setData(dispatch(filterPostsById(filter)));
+    }, []);
+
+    return (
+        <>
+            {posts.map((post) => 
+                <Post post={post[0]} key={post[0]._id}/>
+            )}
+        </>
+    )
+}
+
 const Threads = () => {
     const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
     var [data, setData] = useState([]);
-    var [thData, setThData] = useState([])
     const postID = useParams().post_id;
-
-    const posts = useSelector((state) => state.posts);
 
     const threads = useSelector((state) => state.threads);
     var filter = {
@@ -28,26 +53,17 @@ const Threads = () => {
     
     useEffect(() => {
         console.log("UseEffect in Threads.js");
-        setData(dispatch(filterPostsById(filter)));
-        setThData(dispatch(getThreads(filter)));
+        setData(dispatch(getThreads(filter)));
     }, []);
-
-    //console.log(threads);
-    //threads.map((thread) => console.log(thread));
+    
     return (
-        <>
-            {posts.map((post) => 
-                <Post post={post[0]} key={post[0]._id}/>
-            )}
-            
-            {/* <ThreadForm post = {postID}/> */}
+        <>  
+            <Origin/>
+            <ThreadForm post = {postID}/>
             <h1>THREADS</h1>
             {threads.map((thread) =>
-                console.log(thread)
-                // <Thread thread = {thread} key={thread._id}/> 
+                <Thread thread = {thread} key={thread._id} setCurrentId={setCurrentId}/>
             )}
-            
-            
         </>
         
     );

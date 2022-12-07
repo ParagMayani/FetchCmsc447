@@ -44,7 +44,7 @@ const Post = ({post, setCurrentId}) => {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href={thread_url} onClick={() => dispatch(getThreads(post._id))}>Threads</Dropdown.Item>
+                                <Dropdown.Item href={thread_url}>Threads</Dropdown.Item>
                                 <Dropdown.Item href="/posts" onClick={() => dispatch(deletePost())}>Edit</Dropdown.Item>
                                 <Dropdown.Item href="#/action-3">delete</Dropdown.Item>
                             </Dropdown.Menu>
@@ -54,7 +54,6 @@ const Post = ({post, setCurrentId}) => {
                     <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(post))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(post))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>
             </div>
-            {/* <Threads post_id={post._id}/> */}
         </>
     );
 }

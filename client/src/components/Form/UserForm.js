@@ -2,9 +2,9 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../actions/users";
-import md5 from 'md5-hash'
+import md5 from 'md5-hash';
 
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { TextField, Button, Paper } from '@material-ui/core';
 
 
 const UserForm = () => {

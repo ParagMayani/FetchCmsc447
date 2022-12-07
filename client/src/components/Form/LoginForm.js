@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../actions/users";
 
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { TextField, Button, Paper } from '@material-ui/core';
 
 
 const LoginForm = () => {

@@ -1,4 +1,5 @@
 import { CreateThread } from "../models/thread.js";
+import { mongoose} from 'mongoose';
 
  export const getThreads = async (request, response) => {
     console.log("GetThreads");
@@ -43,7 +44,7 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const likeThreads = async (request, response) => {
-    const id = request.body.threadID;
+    const id = request.body._id;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }
@@ -63,7 +64,7 @@ import { CreateThread } from "../models/thread.js";
  }
 
  export const dislikeThreads = async (request, response) => {
-    const id = request.body.threadID;
+    const id = request.body._id;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No thread with that ID"));
     }

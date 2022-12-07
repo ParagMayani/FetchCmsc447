@@ -1,13 +1,12 @@
 
 import React from "react";
 import { useDispatch } from "react-redux";
-import { dislikeThread, likeThread } from "../../../api";
+import { dislikeThread, likeThread } from "../../../actions/threads";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Thread = ({thread, setCurrentId}) => {
-    console.log("THREAD called");
     const dispatch = useDispatch();
     var today = new Date();
-    //const date = today.now() - post.created_on;
     var created = new Date(thread.created_on);
     var seconds = (today - created )/ 1000;
     var minutes = (seconds)/ 60;
@@ -35,16 +34,15 @@ const Thread = ({thread, setCurrentId}) => {
                         <div className="d-flex flex-row align-items-center feed-text px-2">
                             <div className="d-flex flex-column flex-wrap ml-2"><span className="text-black-50 time">{Timeline}</span></div>
                         </div>
-                        <div className="dropdown show">
-                        <a className="btn btn-secondary dropdown-toggle" href="/" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </a>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            </Dropdown.Toggle>
 
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a className="dropdown-item" href="/">Action</a>
-                            <a className="dropdown-item" href="/">Another action</a>
-                            <a className="dropdown-item" href="/">Something else here</a>
-                        </div>
-                        </div>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="/">Edit</Dropdown.Item>
+                                <Dropdown.Item href="/">Delete</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </div>
                     <div className="feed-image p-2 px-3"><span>{thread.description}</span></div>
                     <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likeThread(thread))}><i className="fa fa-arrow-up">{thread.likes}</i></button><button onClick ={() => dispatch(dislikeThread(thread))}><i className="fa fa-arrow-down">{thread.dislikes}</i></button></div>
