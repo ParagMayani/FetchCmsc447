@@ -7,12 +7,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
-    //const data = dispatch(filterPosts(post));
-    //console.log(data._id);
     var liked = false;
     var disliked = false;
     var today = new Date();
-    //const date = today.now() - post.created_on;
     var created = new Date(post.created_on);
     var seconds = (today - created )/ 1000;
     var minutes = (seconds)/ 60;

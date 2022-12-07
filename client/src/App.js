@@ -14,7 +14,7 @@ import Post from './components/Posts/Post/Post';
 
 
 const App = () => {
-    const [IsLogin, IsLiked] = [];
+    // const [IsLogin, IsLiked] = [];
     return(
         <>
         <BrowserRouter>
@@ -34,12 +34,6 @@ const App = () => {
                 </>}/>
             </Routes>
         </BrowserRouter>
-        
-        {/* <UserForm/>
-        <Form currentId = {currentId} setCurrentID={setCurrentId}/>
-        <Posts setCurrentID={setCurrentId}/> */}
-        
-        {/* <UserForm/> */}
         
         </>
         

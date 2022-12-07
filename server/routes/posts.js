@@ -1,11 +1,12 @@
 import express from "express";
 
-import { getAllPosts, getFilteredPosts, createPosts, updatePosts, likePosts, unlikePosts, dislikePosts, undislikePosts, deletePosts } from "../controllers/posts.js";
+import { getAllPosts, createPosts, updatePosts, likePosts, unlikePosts, dislikePosts, undislikePosts, deletePosts, getFilteredPostById, getFilteredPostByCategory } from "../controllers/posts.js";
 
 const router = express.Router();
 
 router.get("/get", getAllPosts);
-router.post("/get/filters", getFilteredPosts);
+router.get("/get/filters/:_id", getFilteredPostById);
+router.get("/get/filters/:category", getFilteredPostByCategory);
 router.post("/create", createPosts);
 router.patch("/update", updatePosts);
 router.patch("/update/like", likePosts);

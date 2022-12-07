@@ -4,6 +4,7 @@ import { READ_POST, FILTER_POST, CREATE_POST, EDIT_POST, DELETE_POST, LIKE_POST}
 export default (posts = [], action) => {
     switch(action.type) {
         case READ_POST:
+            return action.payload;
         case FILTER_POST:
             return action.payload;
         case CREATE_POST:

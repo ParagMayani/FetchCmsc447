@@ -11,14 +11,13 @@ export const getPosts = () => async(dispatch) => {
     }
 }
 
-export const filterPosts = (filters) => async(dispatch) => {
+export const filterPostsById = (filters) => async(dispatch) => {
     try {
         console.log("tryblock for getFilterPosts");
-        const {data } = await api.filterPosts(filters);
+        const { data } = await api.filterPostById(filters);
         dispatch({type: 'FILTER_POST', payload: data});
     } catch (error){
         console.log(error.message);
-        
     }
 }
 

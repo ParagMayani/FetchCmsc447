@@ -1,4 +1,3 @@
-import { copyFileSync } from 'fs';
 import * as api from '../api';
 
 export const getThreads = (post) => async(dispatch) => {

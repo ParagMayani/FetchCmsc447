@@ -4,7 +4,7 @@ import { getThreads, createThreads, updateThreads, likeThreads, unlikeThreads, d
 
 const router = express.Router();
 
-router.get("/get", getThreads);
+router.get("/get/:post_id", getThreads);
 router.post("/create", createThreads);
 router.patch("/update", updateThreads);
 router.patch("/update/like", likeThreads);

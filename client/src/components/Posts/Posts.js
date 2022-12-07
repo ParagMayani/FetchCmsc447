@@ -19,7 +19,7 @@ const Posts = () => {
         setData(dispatch(getPosts()));
     }, []);
 
-    //console.log(posts);
+    //console.log(data);
     return (
         <>
             <h1>POSTS</h1>

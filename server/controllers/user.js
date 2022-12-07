@@ -1,11 +1,11 @@
 import { CreateUser } from "../models/user.js";
 import pkg from 'blueimp-md5';
-const { md5 } = pkg;
+const md5 = pkg;
 
 export const createUsers = async (request, response) => {
      const the_user = request.body;
      the_user.password = md5(the_user.password);
-     const new_user = new CreateUser(the_post);
+     const new_user = new CreateUser(the_user);
      try {
          await new_user.save();
          response.status(201).json(new_user);

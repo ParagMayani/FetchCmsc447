@@ -11,10 +11,33 @@ export const getAllPosts = async (request, response) => {
     }
 }
 
-export const getFilteredPosts = async (request, response) => {
-    console.log("filteredPosts");
+export const getFilteredPostById = async (request, response) => {
+    console.log("filteredPostById");
     var filteredPosts = [];
-    var filters = request.body;
+    var filters = request.params;
+    if(filters != null){
+        console.log("filters is not null");
+        console.log(filters);
+    }
+    var type = Object.keys(filters);
+    var filter = filters[type];
+    try {
+        const filtered_post = await CreatePost.find({[type]: [filter]}).sort({created_on:-1});
+        filteredPosts.push(filtered_post);
+    }
+    catch (error){
+        response.status(409).json({message: error.message});
+    }
+    response.status(201).json(filteredPosts);
+}
+
+export const getFilteredPostByCategory = async (request, response) => {
+    console.log("filteredPostByCategory");
+    var filteredPosts = [];
+    var filters = request.params;
+    if(filters != null){
+        console.log(filters);
+    }
     for (let i = 0; i < Object.keys(filters).length; i++) {
         var type = Object.keys(filters)[i];
         var filter = filters[type];
@@ -26,7 +49,7 @@ export const getFilteredPosts = async (request, response) => {
             response.status(409).json({message: error.message});
         }
     }
-    response.status(201).json(filteredPosts);
+    response.json(filteredPosts);
 }
 
  export const createPosts = async (request, response) => {

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { dislikeThread, likeThread } from "../../../api";
 
 const Thread = ({thread, setCurrentId}) => {
+    console.log("THREAD called");
     const dispatch = useDispatch();
     var today = new Date();
     //const date = today.now() - post.created_on;
