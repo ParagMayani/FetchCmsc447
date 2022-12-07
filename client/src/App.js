@@ -14,6 +14,7 @@ import Post from './components/Posts/Post/Post';
 
 
 const App = () => {
+    const [IsLogin, IsLiked] = [];
     return(
         <>
         <BrowserRouter>

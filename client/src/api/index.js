@@ -6,7 +6,7 @@ const threadURL = 'http://localhost:5000/threads/';
 
 
 export const getPosts = () => axios.get( postURL + 'get');
-export const filterPosts = (filters) => axios.get(postURL + 'get/filters', filters);
+export const filterPosts = (filters) => axios.post(postURL + 'get/filters', filters);
 
 export const createPost = (newPost) => axios.post((postURL + 'create'), newPost);
 export const updatePost = (id, post) => axios.patch((postURL + 'update/'), post);
@@ -28,3 +28,5 @@ export const unlikeThread = (thread) => axios.patch((threadURL + 'update/unlike'
 export const dislikeThread = (thread) => axios.patch((threadURL + 'update/dislike'), thread);
 export const undislikeThread = (thread) => axios.patch((threadURL + 'update/undislike'), thread);
 export const deleteThread = (thread) => axios.delete((threadURL + 'delete'), thread);
+
+export const login = (username, password) => axios.patch((userURL + 'signin'), username, password);

@@ -3,11 +3,11 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import './formStyle.css';
-import { createThread, updateThread } from "../../api";
+import { createThread, updateThread } from "../../actions/threads";
 const ThreadForm = ({post, currentId, setCurrentId}) => {
     const [threadData, setThreadData] = useState({
         description: '',
-        post_id: post._id
+        post_id: post
     });
 
     const dispatch = useDispatch();

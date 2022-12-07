@@ -36,7 +36,7 @@ const Form = ({currentId, setCurrentId}) => {
     }
     return (
         <>
-            <h1>FORM</h1>
+            <h1></h1>        
             <div >
                 <form id="postForm" autoComplete="on" onSubmit={handleSubmit} method="POST">
                 

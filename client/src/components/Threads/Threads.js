@@ -12,26 +12,30 @@ import Post from "../Posts/Post/Post";
 
 import Thread from './Thread/Thread';
 const Threads = ({setCurrentId}) => {
-   
-    const [postData, setPostData] = useState();
+    const threads = useSelector((state) => state.threads);
+    const postID = useParams().post_id;
+    const [postData, setPostData] = useState({
+        _id: postID
+    });
     const [data, setData] = useState([]);
-    const post_id = useParams();
+    
     const dispatch = useDispatch();
     useEffect(() => {
         console.log("UseEffect in Threads.js");
-        console.log(post_id);
-        setPostData(dispatch(filterPosts(post_id)));
+        console.log(postData);
+        setPostData(dispatch(filterPosts(postData)));
     }, []);
 
-    const threads = useSelector((state) => state.threads);
+    
     console.log(postData);
     
 
     // const post = dispatch(filterPosts(post_id));
     return (
         <>
-            {/* <Post key={post_id} setCurrentId={setCurrentId}/> */}
-            {/* <ThreadForm/> */}
+            console.log(postData);
+            <Post post={postData} key={postData._id} setCurrentId={setCurrentId}/>
+            <ThreadForm post = {postID}/>
             <h1>THREADS</h1>
             {threads.map((thread) =>
                 <Thread thread = {thread} key={thread._id} setCurrentId={setCurrentId}/> 

@@ -5,6 +5,7 @@ export const EDIT_POST = 'EDIT_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 export const CREATE_PROFILE = 'CREATE_PROFILE';
+export const LOGIN_USER = 'LOGIN_USER';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
 export const DELETE_PROFILE = 'DELETE_PROFILE';
 

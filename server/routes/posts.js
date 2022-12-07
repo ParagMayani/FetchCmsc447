@@ -5,7 +5,7 @@ import { getAllPosts, getFilteredPosts, createPosts, updatePosts, likePosts, unl
 const router = express.Router();
 
 router.get("/get", getAllPosts);
-router.get("/get/filters", getFilteredPosts);
+router.post("/get/filters", getFilteredPosts);
 router.post("/create", createPosts);
 router.patch("/update", updatePosts);
 router.patch("/update/like", likePosts);

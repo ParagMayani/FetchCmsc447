@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import {deletePost, likePost, dislikePost } from '../../../actions/posts';
 import { getThreads } from '../../../actions/threads';
 import Dropdown from 'react-bootstrap/Dropdown';
-import {myFunction} from './styles.js';
-import './styles.css';
 
 const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
@@ -50,7 +48,7 @@ const Post = ({post, setCurrentId}) => {
 
                             <Dropdown.Menu>
                                 <Dropdown.Item href={thread_url} onClick={() => dispatch(getThreads(post._id))}>Threads</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
+                                <Dropdown.Item href="/posts" onClick={() => dispatch(deletePost())}>Edit</Dropdown.Item>
                                 <Dropdown.Item href="#/action-3">delete</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

@@ -15,11 +15,11 @@ export const getFilteredPosts = async (request, response) => {
     console.log("filteredPosts");
     var filteredPosts = [];
     var filters = request.body;
-    console.log(filters);
-    for (let i = 0; i < filters.types.length; i++) {
-        var type = filters.types[i];
+    for (let i = 0; i < Object.keys(filters).length; i++) {
+        var type = Object.keys(filters)[i];
+        var filter = filters[type];
         try {
-            const filtered_post = await CreatePost.find({[type]: true}).sort({created_on:-1});
+            const filtered_post = await CreatePost.find({[type]: [filter]}).sort({created_on:-1});
             filteredPosts.push(filtered_post);
         }
         catch (error){

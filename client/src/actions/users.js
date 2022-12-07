@@ -10,6 +10,15 @@ export const createUser = (user) => async(dispatch) => {
     }
 }
 
+export const loginUser = (username, password) => async(dispatch) => {
+    try{
+        const {data} = await api.login(username, password);
+        dispatch({type: 'LOGIN_USER', payload: data});
+    } catch (error){
+        console.log(error.message);
+    }
+}
+
 export const updateUser = (id, post) => async(dispatch) => {
     try{
         const {data } = await api.updateUser(id, post);

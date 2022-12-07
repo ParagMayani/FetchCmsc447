@@ -14,7 +14,6 @@ export const getPosts = () => async(dispatch) => {
 export const filterPosts = (filters) => async(dispatch) => {
     try {
         console.log("tryblock for getFilterPosts");
-        console.log(filters);
         const {data } = await api.filterPosts(filters);
         dispatch({type: 'FILTER_POST', payload: data});
     } catch (error){
