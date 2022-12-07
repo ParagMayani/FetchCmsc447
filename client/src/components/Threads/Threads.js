@@ -12,7 +12,8 @@ import Post from "../Posts/Post/Post";
 
 import Thread from './Thread/Thread';
 const Threads = ({setCurrentId}) => {
-    const [post, setPostData] = useState();
+   
+    const [postData, setPostData] = useState();
     const [data, setData] = useState([]);
     const post_id = useParams();
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Threads = ({setCurrentId}) => {
     }, []);
 
     const threads = useSelector((state) => state.threads);
-    console.log(post);
+    console.log(postData);
     
 
     // const post = dispatch(filterPosts(post_id));

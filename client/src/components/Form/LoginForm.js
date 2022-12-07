@@ -25,6 +25,7 @@ const LoginForm = () => {
     }
     return (
         <>
+        <h1>Log in</h1>
         <Paper>
             <form autoComplete = "off" onSubmit={handleSubmit}>
                 <TextField

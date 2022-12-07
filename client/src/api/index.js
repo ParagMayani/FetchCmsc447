@@ -1,7 +1,4 @@
 import axios from "axios";
-import path from "path";
-
-
 
 const postURL = 'http://localhost:5000/posts/';
 const userURL = 'http://localhost:5000/users/';
@@ -9,7 +6,7 @@ const threadURL = 'http://localhost:5000/threads/';
 
 
 export const getPosts = () => axios.get( postURL + 'get');
-export const filterPosts = (filter) => axios.get(postURL + 'get/filters', filter);
+export const filterPosts = (filters) => axios.get(postURL + 'get/filters', filters);
 
 export const createPost = (newPost) => axios.post((postURL + 'create'), newPost);
 export const updatePost = (id, post) => axios.patch((postURL + 'update/'), post);

@@ -3,7 +3,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import {deletePost, likePost, dislikePost } from '../../../actions/posts';
 import { getThreads } from '../../../actions/threads';
-import { filterPosts, getPosts } from "../../../api";
+import Dropdown from 'react-bootstrap/Dropdown';
+import {myFunction} from './styles.js';
+import './styles.css';
 
 const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
@@ -42,16 +44,16 @@ const Post = ({post, setCurrentId}) => {
                         <div className="d-flex flex-row align-items-center feed-text px-2">
                             <div className="d-flex flex-column flex-wrap ml-2"><span className="text-black-50 time">{Timeline}</span></div>
                         </div>
-                        <div className="dropdown show">
-                        <a href={thread_url} onClick={() => dispatch(getThreads(post._id))} className="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </a>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            </Dropdown.Toggle>
 
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a className="dropdown-item" href="/">Action</a>
-                            <a className="dropdown-item" href="/">Another action</a>
-                            <a className="dropdown-item" href="/">Something else here</a>
-                        </div>
-                        </div>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href={thread_url} onClick={() => dispatch(getThreads(post._id))}>Threads</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">delete</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </div>
                     <div className="feed-image p-2 px-3"><span>{post.description}</span></div>
                     <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(post))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(post))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>

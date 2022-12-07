@@ -1,6 +1,5 @@
 
-import React, { useState,  useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './style.css';
 
@@ -19,7 +18,7 @@ const App = () => {
         <>
         <BrowserRouter>
             <Routes>
-                <Route path ="/"/>
+                <Route path ="/" element={<LoginForm/>}/>
                 <Route path ="/sign_up" element={<UserForm/>}/>
                 <Route path ="/log_in" element={<LoginForm/>}/>
                 <Route path ="/posts" element={

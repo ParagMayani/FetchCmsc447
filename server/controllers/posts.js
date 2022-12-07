@@ -12,8 +12,10 @@ export const getAllPosts = async (request, response) => {
 }
 
 export const getFilteredPosts = async (request, response) => {
+    console.log("filteredPosts");
     var filteredPosts = [];
     var filters = request.body;
+    console.log(filters);
     for (let i = 0; i < filters.types.length; i++) {
         var type = filters.types[i];
         try {
