@@ -1,5 +1,15 @@
 import * as api from '../api';
 
+export const verifyEmail = (email) => async(dispatch) => {
+    try{
+        console.log(email);
+        const {data} = await api.verifyEmail(email);
+        dispatch({type: 'VERIFY_EMAIL', payload: data});
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 export const createUser = (user) => async(dispatch) => {
     try{
         console.log(user);
@@ -10,10 +20,11 @@ export const createUser = (user) => async(dispatch) => {
     }
 }
 
-export const loginUser = (username, password) => async(dispatch) => {
+export const loginUser = (loginData) => async(dispatch) => {
     try{
-        const {data} = await api.login(username, password);
+        const {data} = await api.login(loginData);
         dispatch({type: 'LOGIN_USER', payload: data});
+        console.log(data);
     } catch (error){
         console.log(error.message);
     }

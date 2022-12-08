@@ -13,6 +13,7 @@ export const verifyEmail = async (request, response) => {
 
 export const createUsers = async (request, response) => {
      const the_user = request.body;
+     console.log(the_user);
      the_user.password = md5(the_user.password);
      const new_user = new CreateUser(the_user);
      try {
@@ -26,9 +27,14 @@ export const createUsers = async (request, response) => {
 
 export const loginUsers = async (request, response) => {
     const login_info = request.body;
+    console.log(login_info);
+
+    console.log(login_info.username);
+    console.log(login_info.password);
     login_info.password = md5(login_info.password);
     try {
         const user = await CreateUser.find({username: login_info.username});
+        console.log(user);
         if (user.password === login_info.password){
             response.status(201).json(user);
         }

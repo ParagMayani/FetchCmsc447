@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/verify", verifyEmail);
 router.post("/create", createUsers);
-router.patch("/signin", loginUsers);
+router.post("/login", loginUsers);
 router.patch("/update", updateUsers);
 router.delete("/delete", removeUsers);
 

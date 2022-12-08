@@ -1,13 +1,13 @@
 
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { createUser } from "../../actions/users";
+import { verifyEmail } from "../../actions/users";
 
 import { TextField, Button, Paper } from '@material-ui/core';
 
 
 const EmailForm = () => {
-    const [postData, setPostData] = useState({
+    const [verifyData, setVerifyData] = useState({
         email: ''
     })
 
@@ -16,8 +16,7 @@ const EmailForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //dispatch(verifyEmail(postData));
-        //console.log(postData);
+        setVerifyData(dispatch(verifyEmail(verifyData)));
     }
 
     const clear = () => {
@@ -32,8 +31,8 @@ const EmailForm = () => {
                     variant="outlined"
                     label="example@umbc.edu"
                     fullWidth 
-                    value={postData.email}
-                    onChange={(e) => setPostData({ ...postData, email: e.target.value })}
+                    value={verifyData.email}
+                    onChange={(e) => setVerifyData({ ...verifyData, email: e.target.value })}
                 />
 
                 {/* <Button variant="container" color="primary" size="large" type="submit" fullWidth>Login</Button> */}

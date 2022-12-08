@@ -31,4 +31,4 @@ export const dislikeThread = (thread) => axios.patch((threadURL + 'update/dislik
 export const undislikeThread = (thread) => axios.patch((threadURL + 'update/undislike'), thread);
 export const deleteThread = (thread) => axios.delete((threadURL + 'delete'), thread);
 
-export const login = (username, password) => axios.patch((userURL + 'signin'), username, password);
+export const login = (loginData) => axios.post((userURL + 'login'), loginData);

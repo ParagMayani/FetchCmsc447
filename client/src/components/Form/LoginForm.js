@@ -1,13 +1,13 @@
 
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { createUser } from "../../actions/users";
+import { loginUser } from "../../actions/users";
 
 import { TextField, Button, Paper } from '@material-ui/core';
 
 
 const LoginForm = () => {
-    const [postData, setPostData] = useState({
+    const [loginData, seLogintData] = useState({
        username: '', password: ''
     })
 
@@ -16,12 +16,12 @@ const LoginForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createUser(postData));
-        console.log(postData);
+        dispatch(loginUser(loginData));
+        console.log(loginData);
     }
 
     const clear = () => {
-        setPostData({username: '', password: ''});
+        seLogintData({username: '', password: ''});
     }
     return (
         <>
@@ -33,8 +33,8 @@ const LoginForm = () => {
                     variant="outlined"
                     label="User Name"
                     fullWidth 
-                    value={postData.user_name}
-                    onChange={(e) => setPostData({ ...postData, username: e.target.value })}
+                    value={loginData.user_name}
+                    onChange={(e) => seLogintData({ ...loginData, username: e.target.value })}
                 />
 
                 <TextField
@@ -42,8 +42,9 @@ const LoginForm = () => {
                     variant="outlined"
                     label="Password"
                     fullWidth 
-                    value={postData.password}
-                    onChange={(e) => setPostData({ ...postData, password: e.target.value })}
+                    value={loginData.password}
+                    type="password"
+                    onChange={(e) => seLogintData({ ...loginData, password: e.target.value })}
                 />
 
                 <Button variant="container" color="primary" size="large" type="submit" fullWidth>Login</Button>
