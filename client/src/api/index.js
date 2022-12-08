@@ -16,6 +16,7 @@ export const dislikePost = (post) => axios.patch((postURL + 'update/dislike/'), 
 export const undislikePost = (post) => axios.patch((postURL + 'update/unldisike/'), post);
 export const deletePost = (post) => axios.delete((postURL + 'delete/'), post);
 
+export const verifyEmail = (email) => axios.post((userURL + 'verify'), email);
 export const createUser = (newUser) => axios.post((userURL + 'create'), newUser);
 export const updateUser = (user) => axios.patch((userURL + 'update'), user);
 export const deleteUser = (user) => axios.delete((userURL + 'delete'), user);

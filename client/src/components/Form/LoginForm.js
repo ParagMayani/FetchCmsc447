@@ -8,7 +8,7 @@ import { TextField, Button, Paper } from '@material-ui/core';
 
 const LoginForm = () => {
     const [postData, setPostData] = useState({
-        firstname: '', lastname: '', age: '', major: '', study_year: '', username: '', password: ''
+       username: '', password: ''
     })
 
 
@@ -21,7 +21,7 @@ const LoginForm = () => {
     }
 
     const clear = () => {
-        setPostData({firstname: '', lastname: '', age: '', major: '', study_year: '', username: '', password: ''});
+        setPostData({username: '', password: ''});
     }
     return (
         <>

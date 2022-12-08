@@ -8,6 +8,7 @@ import Form from './components/Form/Form';
 import UserForm from './components/Form/UserForm';
 import Threads from './components/Threads/Threads';
 import LoginForm from './components/Form/LoginForm';
+import EmailForm from './components/Form/EmailForm';
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
                 <Route path ="/" element={<LoginForm/>}/>
                 <Route path ="/sign_up" element={<UserForm/>}/>
                 <Route path ="/log_in" element={<LoginForm/>}/>
+                <Route path ="/verify_email" element={<EmailForm/>}/>
                 <Route path ="/posts" element={
                     <>
                         <Form/>

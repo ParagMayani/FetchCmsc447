@@ -18,14 +18,14 @@ function Header(){
                 <a className="nav-link text-white" href="/"><i className="fas fa-cog mx-1"></i> Settings</a>
             </li>
             <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 <a id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i className="fas fa-user mx-1"></i> Profile </a>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item href="/">Log in</Dropdown.Item>
-                    <Dropdown.Item href="/">Sign up</Dropdown.Item>
-                    <Dropdown.Item href="/">Log out</Dropdown.Item>
+                    <Dropdown.Item href="/log_in">Log in</Dropdown.Item>
+                    <Dropdown.Item href="/verify_email">Sign up</Dropdown.Item>
+                    <Dropdown.Item href="/log_out">Log out</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             

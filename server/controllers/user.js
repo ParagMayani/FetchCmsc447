@@ -1,6 +1,15 @@
 import { CreateUser } from "../models/user.js";
 import pkg from 'blueimp-md5';
+import { response } from "express";
 const md5 = pkg;
+
+export const verifyEmail = async (request, response) => {
+    try{
+
+    }catch(error){
+        response.status(409).json({message: error.message});
+    }
+}
 
 export const createUsers = async (request, response) => {
      const the_user = request.body;
