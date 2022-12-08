@@ -14,7 +14,7 @@ import Thread from './Thread/Thread';
 
 const Origin = () => {
     const dispatch = useDispatch();
-    var [data, setData] = useState();
+    var [data, setData] = useState(null);
 
     const postID = useParams().post_id;
 
@@ -55,14 +55,18 @@ const Threads = () => {
         console.log("UseEffect in Threads.js");
         setData(dispatch(getThreads(filter)));
     }, []);
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
     
     return (
         <>  
             <Origin/>
             <ThreadForm post = {postID}/>
             <h1>THREADS</h1>
-            {threads.map((thread) =>
-                <Thread thread = {thread} key={thread._id} setCurrentId={setCurrentId}/>
+            {threads.map((thread, i) =>
+                <Thread thread = {thread} setCurrentId={setCurrentId} key={i}/>
             )}
         </>
         

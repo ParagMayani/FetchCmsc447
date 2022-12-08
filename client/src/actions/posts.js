@@ -64,7 +64,6 @@ export const dislikePost = (post) => async(dispatch) => {
     try{
         console.log(post);
         const {data } = await api.dislikePost(post);
-        
         dispatch({type: 'DISLIKE_POST', payload: data});
     } catch (error){
         console.log(error.message);

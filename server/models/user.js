@@ -7,7 +7,9 @@ const userSchema = mongoose.Schema({
     major: String,
     study_year: String,
     username: String,
-    password: String
+    password: String,
+    likes: [mongoose.Schema.Types.ObjectId],
+    dislike: [mongoose.Schema.Types.ObjectId]
 });
 
 export const CreateUser = mongoose.model("CreateUser", userSchema);

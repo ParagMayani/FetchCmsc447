@@ -27,12 +27,10 @@ const Form = ({currentId, setCurrentId}) => {
         } else {
             dispatch(createPost(postData));
         }
-        
-        
     }
     
     function refreshPage() {
-        // window.location.reload(false);
+        window.location.reload(false);
     }
     return (
         <>

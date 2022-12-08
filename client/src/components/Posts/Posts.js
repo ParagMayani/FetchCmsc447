@@ -23,7 +23,7 @@ const Posts = () => {
         <>
             <h1>POSTS</h1>
             {posts.map((post) =>
-                <Post post = {post} key={post._id} setCurrentId={setCurrentId}/> 
+                <Post post = {post} setCurrentId={setCurrentId} key={post._id}/> 
             )}
             
             

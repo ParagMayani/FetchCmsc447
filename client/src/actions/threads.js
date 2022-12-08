@@ -51,9 +51,9 @@ export const likeThread = (thread) => async(dispatch) => {
 
 export const dislikeThread = (thread) => async(dispatch) => {
     try{
-        console.log(thread);
-        const {data } = await api.dislikeThread(thread);
         
+        const {data } = await api.dislikeThread(thread);
+        console.log(data);
         dispatch({type: 'DISLIKE_THREAD', payload: data});
     } catch (error){
         console.log(error.message);

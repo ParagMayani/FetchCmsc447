@@ -1,4 +1,4 @@
-import { READ_POST, FILTER_POST, CREATE_POST, EDIT_POST, DELETE_POST, LIKE_POST} from './ActionTypes';
+import { READ_POST, FILTER_POST, CREATE_POST, EDIT_POST, DELETE_POST, LIKE_POST, DISLIKE_POST} from './ActionTypes';
 
 
 export default (posts = [], action) => {
@@ -13,6 +13,7 @@ export default (posts = [], action) => {
             return posts.filter((post => post._id === action.playload));
         case EDIT_POST:
         case LIKE_POST:
+        case DISLIKE_POST:
             return posts.map(( post ) => post._id === action.payload._id ? action.payload : post);
         default:
             return posts;

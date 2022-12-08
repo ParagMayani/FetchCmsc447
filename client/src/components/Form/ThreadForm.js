@@ -38,7 +38,7 @@ const ThreadForm = ({post, currentId, setCurrentId}) => {
 
                     {/* <CreatableSelect isClearable options={options} name="category" onChange={(e) => setPostData({ ...postData, category: e.target.value})} /> */}
                     {/* <input type="hidden" name="userID" onChange={(e) => setPostData({ ...postData, userID: e.target.value})}></input> */}
-                    <input className="threadForm-button" type="submit" value="Submit"></input>
+                    <input className="threadForm-button" onClick={refreshPage} type="submit" value="Submit"></input>
                     
                 </form>
             </div>

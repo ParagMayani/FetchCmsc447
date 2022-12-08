@@ -5,6 +5,7 @@ import { dislikeThread, likeThread } from "../../../actions/threads";
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const Thread = ({thread, setCurrentId}) => {
+    console.log(thread._id);
     const dispatch = useDispatch();
     var today = new Date();
     var created = new Date(thread.created_on);
@@ -25,6 +26,10 @@ const Thread = ({thread, setCurrentId}) => {
 
     if(hours >= 24){
         Timeline = Math.round(days) + " days ago";
+    }
+
+    function refreshPage() {
+        window.location.reload(false);
     }
     return (
         <>
