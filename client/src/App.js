@@ -31,6 +31,12 @@ const App = () => {
                 <>
                     <Threads/>
                 </>}/>
+                <Route path ="/posts/:category" element={
+                    <>
+                        <Form/>
+                        <Posts/>
+                    </>
+                }/>
             </Routes>
         </BrowserRouter>
         

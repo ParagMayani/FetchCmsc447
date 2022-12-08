@@ -3,18 +3,15 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
+import Dropdown from "react-bootstrap/Dropdown"
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Button from 'react-bootstrap/Button';
 import './formStyle.css';
+import { useParams } from "react-router-dom";
 const Form = ({currentId, setCurrentId}) => {
     const [postData, setPostData] = useState({
-        description: ''
+        description: '', category: 'General'
     });
-
-    const options = [
-        { value: 'academia', label: 'academia' },
-        { value: 'hobby', label: 'hobby' },
-        { value: 'industry', label: 'industry' },
-        { value: 'music', label: 'music'},
-      ]
 
     const dispatch = useDispatch();
 
@@ -42,7 +39,22 @@ const Form = ({currentId, setCurrentId}) => {
 
                     {/* <CreatableSelect isClearable options={options} name="category" onChange={(e) => setPostData({ ...postData, category: e.target.value})} /> */}
                     {/* <input type="hidden" name="userID" onChange={(e) => setPostData({ ...postData, userID: e.target.value})}></input> */}
-                    <input className="postForm-button" onClick={refreshPage} type="submit" value="Submit"></input>
+                    <Button variant="secondary" className="postForm-button" type="Submit" onClick={refreshPage}>
+                        Submit
+                    </Button>
+                    <DropdownButton className="postForm-button"
+                        variant="outline-secondary"
+                        title={postData.category}
+                        id="input-group-dropdown-4"
+                        align="end"
+                        >
+                        <Dropdown.Item onClick={(e) => setPostData({...postData, category: 'Academia'})}>Academia</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => setPostData({...postData, category: 'Music'})}>Music</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => setPostData({...postData, category: 'Hobby'})}>Hobby</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => setPostData({...postData, category: 'Industry'})}>Industry</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item onClick={(e) => setPostData({...postData, category: 'General'})}>General</Dropdown.Item>
+                    </DropdownButton>
                     
                 </form>
             </div>

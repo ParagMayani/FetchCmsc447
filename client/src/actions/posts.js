@@ -21,6 +21,16 @@ export const filterPostsById = (filters) => async(dispatch) => {
     }
 }
 
+export const filterPostsByCategory = (filters) => async(dispatch) => {
+    try {
+        console.log("tryblock for getFilterPostsByCateogry");
+        const { data } = await api.filterPostsByCategory(filters);
+        dispatch({type: 'FILTER_POST', payload: data});
+    } catch (error){
+        console.log(error.message);
+    }
+}
+
 export const createPost = (post) => async(dispatch) => {
     try {
         const {data } = await api.createPost(post);
@@ -51,7 +61,6 @@ export const deletePost = (id) => async(dispatch) => {
 
 export const likePost = (post) => async(dispatch) => {
     try{
-        console.log(post);
         const {data } = await api.likePost(post);
         
         dispatch({type: 'LIKE_POST', payload: data});

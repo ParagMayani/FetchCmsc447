@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import {deletePost, likePost, dislikePost } from '../../../actions/posts';
 import { getThreads } from '../../../actions/threads';
 import Dropdown from 'react-bootstrap/Dropdown';
+import posts from "../../../reducers/posts";
+import './styles.css';
 
 const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const Post = ({post, setCurrentId}) => {
     var Timeline = seconds + " seconds ago";
 
     var thread_url = "/threads/" + post._id;
+    var category_url = "/posts/" + post.category;
 
     if(seconds >= 60){
         Timeline = Math.round(minutes) + " minutes ago";
@@ -38,6 +41,7 @@ const Post = ({post, setCurrentId}) => {
                     <div className="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
                         <div className="d-flex flex-row align-items-center feed-text px-2">
                             <div className="d-flex flex-column flex-wrap ml-2"><span className="text-black-50 time">{Timeline}</span></div>
+                            <div className="feed-image p-2 px-3"><a href={category_url} className="category_text">#{post.category}</a></div>
                         </div>
                         <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -51,6 +55,7 @@ const Post = ({post, setCurrentId}) => {
                         </Dropdown>
                     </div>
                     <div className="feed-image p-2 px-3"><span>{post.description}</span></div>
+                    
                     <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(post))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(post))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>
             </div>

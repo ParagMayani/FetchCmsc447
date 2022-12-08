@@ -6,7 +6,8 @@ const threadURL = 'http://localhost:5000/threads/';
 
 
 export const getPosts = () => axios.get( postURL + 'get');
-export const filterPostById = (filters) => axios.get(postURL + `get/filters/${filters._id}`);
+export const filterPostById = (filters) => axios.get(postURL + `get/filters/id=${filters._id}`);
+export const filterPostsByCategory = (filters) => axios.get(postURL + `get/filters/category=${filters.category}`);
 
 export const createPost = (newPost) => axios.post((postURL + 'create'), newPost);
 export const updatePost = (post) => axios.patch((postURL + 'update/'), post);
