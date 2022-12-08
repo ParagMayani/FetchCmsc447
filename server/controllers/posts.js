@@ -27,7 +27,6 @@ export const getFilteredPostById = async (request, response) => {
 }
 
 export const getFilteredPostByCategory = async (request, response) => {
-    console.log("filteredPostByCategory");
     var filteredPosts = [];
     var filters = request.params;
     if(filters != null){

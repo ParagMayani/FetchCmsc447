@@ -2,9 +2,7 @@ import { CreateThread } from "../models/thread.js";
 import { mongoose} from 'mongoose';
 
  export const getThreads = async (request, response) => {
-    console.log("GetThreads");
     const post = request.params;
-    console.log(post);
     try {
         const all_threads = await CreateThread.find({post_id: post.post_id}).sort({created_on:-1});
         response.json(all_threads);
@@ -16,7 +14,6 @@ import { mongoose} from 'mongoose';
 
  export const createThreads = async (request, response) => {
      const the_thread = request.body;
-     console.log(the_thread);
      const new_thread = new CreateThread(the_thread);
      try {
          await new_thread.save();

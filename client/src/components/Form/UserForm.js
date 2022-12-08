@@ -35,24 +35,6 @@ const UserForm = () => {
         <Paper>
             <form autoComplete = "off" onSubmit={handleSubmit}>
                 <TextField
-                    name="firstname"
-                    variant="outlined"
-                    label="First Name"
-                    fullWidth
-                    value={postData.firstname}
-                    onChange={(e) => setPostData({ ...postData, firstname: e.target.value })}
-                />
-
-                <TextField
-                    name="lastname"
-                    variant="outlined"
-                    label="Last Name"
-                    fullWidth 
-                    value={postData.lastname}
-                    onChange={(e) => setPostData({ ...postData, lastname: e.target.value })}
-                />
-
-                <TextField
                     name="age"
                     variant="outlined"
                     label="Age"
@@ -97,6 +79,17 @@ const UserForm = () => {
                     type="password"
                     onChange={(e) => setPostData({ ...postData, password: e.target.value })}
                 />
+
+                <TextField
+                    name="confirm_password"
+                    variant="outlined"
+                    label="Confirm Password"
+                    fullWidth 
+                    value={postData.confirm_password}
+                    type="password"
+                    onChange={(e) => setPostData({ ...postData, password: e.target.value })}
+                />
+
 
                 <Button variant="container" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>

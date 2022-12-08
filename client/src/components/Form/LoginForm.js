@@ -46,8 +46,8 @@ const LoginForm = () => {
                     onChange={(e) => setPostData({ ...postData, password: e.target.value })}
                 />
 
-                <Button variant="container" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+                <Button variant="container" color="primary" size="large" type="submit" fullWidth>Login</Button>
+                <Button href="/sign_up" variant="contained" color="secondary" size="small" fullWidth>Sign Up</Button>
                 
             </form>
         </Paper>
