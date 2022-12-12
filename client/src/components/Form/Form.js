@@ -7,7 +7,6 @@ import Dropdown from "react-bootstrap/Dropdown"
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
 import './formStyle.css';
-import { useParams } from "react-router-dom";
 const Form = ({currentId, setCurrentId}) => {
     const [postData, setPostData] = useState({
         description: '', category: 'General'
@@ -31,7 +30,7 @@ const Form = ({currentId, setCurrentId}) => {
     }
     return (
         <>
-            <h1></h1>        
+        <span></span>        
             <div >
                 <form id="postForm" autoComplete="on" onSubmit={handleSubmit} method="POST">
                 

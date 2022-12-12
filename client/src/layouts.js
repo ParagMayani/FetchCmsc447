@@ -1,6 +1,10 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+function logout(){
+    localStorage.removeItem("user");
+}
+
 function Header(){
     return(
     <>
@@ -25,7 +29,7 @@ function Header(){
                 <Dropdown.Menu>
                     <Dropdown.Item href="/log_in">Log in</Dropdown.Item>
                     <Dropdown.Item href="/verify_email">Sign up</Dropdown.Item>
-                    <Dropdown.Item href="/log_out">Log out</Dropdown.Item>
+                    <Dropdown.Item href="/log_out" onClick={logout}>Log out</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             

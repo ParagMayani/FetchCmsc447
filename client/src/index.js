@@ -13,9 +13,7 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 const header = ReactDOM.createRoot(document.getElementById('header'));
 header.render(
-  <HEADER>
-    
-  </HEADER>
+  <HEADER/>
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

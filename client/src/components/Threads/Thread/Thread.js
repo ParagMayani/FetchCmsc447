@@ -28,9 +28,6 @@ const Thread = ({thread, setCurrentId}) => {
         Timeline = Math.round(days) + " days ago";
     }
 
-    function refreshPage() {
-        window.location.reload(false);
-    }
     return (
         <>
             <div className="bg-white border mt-2">

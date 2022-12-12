@@ -18,9 +18,7 @@ const EmailForm = () => {
         e.preventDefault();
         setVerifyData(dispatch(verifyEmail(verifyData)));
     }
-
-    const clear = () => {
-    }
+    
     return (
         <>
         <h1>Email Verification</h1>

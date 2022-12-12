@@ -14,15 +14,23 @@ export const verifyEmail = async (request, response) => {
 export const createUsers = async (request, response) => {
      const the_user = request.body;
      console.log(the_user);
-     the_user.password = md5(the_user.password);
-     const new_user = new CreateUser(the_user);
-     try {
-         await new_user.save();
-         response.status(201).json(new_user);
+     const user = await CreateUser.find({username: the_user.username});
+     console.log(user);
+     if (user[0] != null){
+        response.status(410).json({message: "Username already exists, try a different username"});
+     } else {
+        the_user.password = md5(the_user.password);
+        const new_user = new CreateUser(the_user);
+        try {
+            await new_user.save();
+            response.status(201).json(new_user);
+        }
+        catch (error){
+            response.status(409).json({message: error.message});
+        }
      }
-     catch (error){
-         response.status(409).json({message: error.message});
-     }
+
+     
 }
 
 export const loginUsers = async (request, response) => {
@@ -30,17 +38,23 @@ export const loginUsers = async (request, response) => {
     console.log(login_info);
 
     console.log(login_info.username);
-    console.log(login_info.password);
-    login_info.password = md5(login_info.password);
+    
+    let password = md5(login_info.password);
+    console.log(password);
     try {
         const user = await CreateUser.find({username: login_info.username});
-        console.log(user);
-        if (user.password === login_info.password){
-            response.status(201).json(user);
+        if (user != null){
+            if (user[0].password === password){
+                console.log("Password is matching");
+                response.status(201).json(user);
+            }
+            else{
+                response.status(410).json({message: "Incorrect password."});
+            }
+        } else {
+            response.status(411).json({message: "Unable to find the user account."});
         }
-        else{
-            response.status(409).json({message: "Incorrect password."});
-        }
+        
     }
     catch (error){
         response.status(409).json({message: "Unable to find the user account."});

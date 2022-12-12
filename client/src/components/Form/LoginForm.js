@@ -1,28 +1,47 @@
 
 import React, {useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../actions/users";
 
 import { TextField, Button, Paper } from '@material-ui/core';
+import pkg from 'blueimp-md5';
+import { json, useNavigate } from "react-router-dom";
+const md5 = pkg;
 
+function refreshPage() {
+    window.location.reload(false);
+}
 
 const LoginForm = () => {
+    const navigate = useNavigate();
+    const [userData, setUserData] = useState()
     const [loginData, seLogintData] = useState({
        username: '', password: ''
     })
-
-
+    
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(loginUser(loginData));
-        console.log(loginData);
+        if(localStorage.getItem("user") !== null){
+            const data = JSON.parse(localStorage.getItem("user"));
+            if(data.username === loginData.username){
+                if(data.password === md5(loginData.password)){
+                    navigate('/posts');
+                } else {
+                    alert("Your Login is failed check username or password");
+                    //refreshPage();
+                }
+            } else {
+                alert("Your Login is failed check username or password");
+                //refreshPage();
+            }
+        } else {
+            //refreshPage();
+        }
     }
 
-    const clear = () => {
-        seLogintData({username: '', password: ''});
-    }
     return (
         <>
         <h1>Log in</h1>
@@ -47,7 +66,7 @@ const LoginForm = () => {
                     onChange={(e) => seLogintData({ ...loginData, password: e.target.value })}
                 />
 
-                <Button variant="container" color="primary" size="large" type="submit" fullWidth>Login</Button>
+                <Button variant="contained" color="primary" size="large" type="submit" fullWidth>Login</Button>
                 <Button href="/sign_up" variant="contained" color="secondary" size="small" fullWidth>Sign Up</Button>
                 
             </form>

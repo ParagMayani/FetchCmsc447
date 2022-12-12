@@ -1,18 +1,26 @@
 
 
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Navigate, useInRouterContext, useNavigate, useParams } from "react-router-dom";
 import { filterPostsByCategory, getPosts } from "../../actions/posts";
 
 
 import Post from './Post/Post';
 const Posts = () => {
-    const [currentId, setCurrentId] = useState(null);
+    var user = null;
+    const navigate = useNavigate();
+    if(localStorage.getItem("user") !== null){
+        user = JSON.stringify(localStorage.getItem("user"));
+    } else {
+        navigate('/log_in');
+    }
+    
+    //const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
-    const [data, setData] = useState([]);
+    //const [data, setData] = useState([]);
 
     const filter = {
         category: useParams().category
@@ -21,19 +29,19 @@ const Posts = () => {
     const posts = useSelector((state) => state.posts);
     
     useEffect(() => {
-        if(filter.category != undefined){
-            setData(dispatch(filterPostsByCategory(filter)));
+        if(filter.category !== undefined){
+            dispatch(filterPostsByCategory(filter));
         } else {
-            setData(dispatch(getPosts()));
+            dispatch(getPosts());
         }
     }, []);
 
-    if(filter.category != undefined){
+    if(filter.category !== undefined){
         return (
             <>
             <h1>POSTS</h1>
             {posts.map((post, i) =>
-                <Post post = {post} setCurrentId={setCurrentId} key={post._id}/> 
+                <Post post = {post} user={user} key={post._id}/> 
                 )}
             </>
         );
@@ -42,7 +50,7 @@ const Posts = () => {
             <>
                 <h1>POSTS</h1>
                 {posts.map((post) =>
-                    <Post post = {post} setCurrentId={setCurrentId} key={post._id}/> 
+                    <Post post = {post} user={user} key={post._id}/> 
                 )}
                 
                 

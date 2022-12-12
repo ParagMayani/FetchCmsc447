@@ -2,15 +2,22 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import {deletePost, likePost, dislikePost } from '../../../actions/posts';
-import { getThreads } from '../../../actions/threads';
 import Dropdown from 'react-bootstrap/Dropdown';
-import posts from "../../../reducers/posts";
 import './styles.css';
 
-const Post = ({post, setCurrentId}) => {
+function likeButton(){
+
+};
+function dislikeButton(){
+
+};
+
+const Post = ({post, user}) => {
     const dispatch = useDispatch();
-    var liked = false;
-    var disliked = false;
+    const userID = JSON.parse(localStorage.getItem("user"))._id;
+    const data = {post, userID};    
+    //var liked = false;
+    //var disliked = false;
     var today = new Date();
     var created = new Date(post.created_on);
     var seconds = (today - created )/ 1000;
@@ -56,7 +63,7 @@ const Post = ({post, setCurrentId}) => {
                     </div>
                     <div className="feed-image p-2 px-3"><span>{post.description}</span></div>
                     
-                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(post))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(post))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
+                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(data))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(post))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>
             </div>
         </>

@@ -5,6 +5,7 @@ import { createUser } from "../../actions/users";
 import md5 from 'md5-hash';
 
 import { TextField, Button, Paper } from '@material-ui/core';
+import { Navigate } from "react-router-dom";
 
 
 const UserForm = () => {
@@ -17,14 +18,8 @@ const UserForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        var hashed=md5(postData.password);
-        setPostData({ ...postData, password: '1'});
-        console.log(postData.password);
-        console.log(md5(postData.password));
         
         dispatch(createUser(postData));
-        console.log(postData);
     }
 
     const clear = () => {
@@ -80,18 +75,7 @@ const UserForm = () => {
                     onChange={(e) => setPostData({ ...postData, password: e.target.value })}
                 />
 
-                <TextField
-                    name="confirm_password"
-                    variant="outlined"
-                    label="Confirm Password"
-                    fullWidth 
-                    value={postData.confirm_password}
-                    type="password"
-                    onChange={(e) => setPostData({ ...postData, password: e.target.value })}
-                />
-
-
-                <Button variant="container" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+                <Button variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
                 
             </form>

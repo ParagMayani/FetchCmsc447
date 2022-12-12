@@ -70,32 +70,46 @@ export const getFilteredPostByCategory = async (request, response) => {
  }
 
  export const likePosts = async (request, response) => {
-    const id  = request.body.post_id;
-    console.log(id);
+    const userID = request.body.userID;
+    const id  = request.body.post._id;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (response.status(404).send("No post with that ID"));
     }
-    const alreadyLiked = await CreateUser.find({likes: request.body.post_id});
-    if(alreadyLiked == null){
+    const the_user = await CreateUser.findById(userID);
+    if(the_user.likes.length === 0){
+        console.log("There is nothing in likes");
         const the_post = await CreatePost.findById(id);
         const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : (the_post.likes + 1)}, {new: true});
-        await CreateUser.findByIdAndUpdate(request.body.user_id, { $push: { likes: request.body.post_id } }, {new: true});
+        await CreateUser.findByIdAndUpdate(userID, { $push: { likes: id }});
         response.json(likedPost);
     }
-    else{
-        response.json(unlikePosts(request.body.post_id, request.body.user_id));
+    if(the_user.likes.length > 0){
+        console.log(the_user);
+        const the_post = await CreatePost.findById(id);
+        
+        // for(const postID of the_user.likes){
+        //     if(postID.toString() == the_post._id){
+        //         response.json(unlikePosts(id, userID));
+        //     }
+        // }
+        // const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : (the_post.likes + 1)}, {new: true});
+        // await CreateUser.findByIdAndUpdate(userID, { $push: { likes: id }});
+        // response.json(likedPost);
+    } else {
+        response.json(unlikePosts(id, userID));
     }
  }
 
  async function unlikePosts (post_id, user_id){
     const the_post = await CreatePost.findById(post_id);
     const unlikedPost = await CreatePost.findByIdAndUpdate(post_id, {likes : the_post.likes - 1}, {new: true});
-    await CreateUser.findByIdAndUpdate(user_id, { $pull: { likes: post_id } }, {new: true});
+    await CreateUser.findByIdAndUpdate(user_id, { $pull: { likes: post_id } });
     return unlikedPost;
  }
 
  export const dislikePosts = async (request, response) => {
-    const id = request.body.post_id;
+    const userID = request.body.userID;
+    const id = request.body.post._id;
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }

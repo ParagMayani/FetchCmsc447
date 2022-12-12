@@ -12,7 +12,7 @@ import EmailForm from './components/Form/EmailForm';
 
 
 const App = () => {
-    // const [IsLogin, IsLiked] = [];
+    const user = localStorage.getItem("user");
     return(
         <>
         <BrowserRouter>

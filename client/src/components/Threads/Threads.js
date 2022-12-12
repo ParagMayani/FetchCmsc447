@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -14,7 +14,6 @@ import Thread from './Thread/Thread';
 
 const Origin = () => {
     const dispatch = useDispatch();
-    var [data, setData] = useState(null);
 
     const postID = useParams().post_id;
 
@@ -27,7 +26,7 @@ const Origin = () => {
 
     useEffect(() => {
         console.log("UseEffect in  origin of Threads.js");
-        setData(dispatch(filterPostsById(filter)));
+        dispatch(filterPostsById(filter));
     }, []);
 
     return (
@@ -40,9 +39,8 @@ const Origin = () => {
 }
 
 const Threads = () => {
-    const [currentId, setCurrentId] = useState(null);
+    //const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
-    var [data, setData] = useState([]);
     const postID = useParams().post_id;
 
     const threads = useSelector((state) => state.threads);
@@ -53,12 +51,8 @@ const Threads = () => {
     
     useEffect(() => {
         console.log("UseEffect in Threads.js");
-        setData(dispatch(getThreads(filter)));
+        dispatch(getThreads(filter));
     }, []);
-
-    function refreshPage() {
-        window.location.reload(false);
-    }
     
     return (
         <>  
@@ -66,7 +60,7 @@ const Threads = () => {
             <ThreadForm post = {postID}/>
             <h1>THREADS</h1>
             {threads.map((thread, i) =>
-                <Thread thread = {thread} setCurrentId={setCurrentId} key={i}/>
+                <Thread thread = {thread} key={i}/>
             )}
         </>
         
