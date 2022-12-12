@@ -153,10 +153,7 @@ export const getFilteredPostByCategory = async (request, response) => {
     }
     const the_post = await CreatePost.findById(postID);
     const the_user = await CreateUser.findById(userID);
-    console.log(the_post.created_by.toString());
-    console.log(the_user._id.toString());
     if (the_post.created_by.toString() == the_user._id.toString()){
-        console.log("is this called?");
         await CreatePost.findByIdAndRemove(the_post._id);
         response.json({message: "Post deleted successfully."});
     }

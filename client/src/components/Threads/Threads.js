@@ -11,6 +11,7 @@ import Post from "../Posts/Post/Post";
 
 
 import Thread from './Thread/Thread';
+import { Button } from "@material-ui/core";
 
 const Origin = () => {
     const dispatch = useDispatch();
@@ -56,9 +57,11 @@ const Threads = () => {
     
     return (
         <>  
+            <p></p>
+            <Button href="/posts" class="btn btn-outline-secondary">Go back</Button>
             <Origin/>
             <ThreadForm post = {postID}/>
-            <h1>THREADS</h1>
+            <h1>COMMENT</h1>
             {threads.map((thread, i) =>
                 <Thread thread = {thread} key={i}/>
             )}

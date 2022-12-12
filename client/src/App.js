@@ -27,7 +27,8 @@ const App = () => {
             <Routes>
                 <Route path ="/" element={
                     <>
-                        {main(user)};
+                        <p></p>
+                        {main(user)}
                     </>
                 
                 }/>
@@ -36,6 +37,7 @@ const App = () => {
                 <Route path ="/verify_email" element={<EmailForm/>}/>
                 <Route path ="/posts" element={
                     <>
+                        <p></p>
                         <Form/>
                         <Posts/>
                     </>
@@ -46,6 +48,7 @@ const App = () => {
                 </>}/>
                 <Route path ="/posts/:category" element={
                     <>
+                        <p></p>
                         <Form/>
                         <Posts/>
                     </>

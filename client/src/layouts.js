@@ -29,8 +29,8 @@ function Header(){
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-        <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-        <Dropdown.Item href="/log_out" onClick={logout}>Log out</Dropdown.Item>
+                <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+                <Dropdown.Item href="/log_in" onClick={logout}>Log out</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             

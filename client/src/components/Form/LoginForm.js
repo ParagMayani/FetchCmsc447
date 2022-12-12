@@ -40,7 +40,9 @@ const LoginForm = () => {
 
     return (
         <>
+        <p></p>
         <h1>Log in</h1>
+        <p></p>
         <Paper>
             <form autoComplete = "off" onSubmit={handleSubmit}>
                 <TextField
@@ -63,7 +65,7 @@ const LoginForm = () => {
                 />
 
                 <Button variant="contained" color="primary" size="large" type="submit" fullWidth>Login</Button>
-                <Button href="/sign_up" variant="contained" color="secondary" size="small" fullWidth>Sign Up</Button>
+                <Button href="/verify_email" variant="contained" color="secondary" size="small" fullWidth>Sign Up</Button>
                 
             </form>
         </Paper>

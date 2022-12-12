@@ -14,6 +14,10 @@ const Form = ({currentId, setCurrentId}) => {
 
     const dispatch = useDispatch();
 
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(postData);
@@ -25,9 +29,7 @@ const Form = ({currentId, setCurrentId}) => {
         }
     }
     
-    function refreshPage() {
-        window.location.reload(false);
-    }
+    
     return (
         <>
         <span></span>        
@@ -38,7 +40,7 @@ const Form = ({currentId, setCurrentId}) => {
 
                     {/* <CreatableSelect isClearable options={options} name="category" onChange={(e) => setPostData({ ...postData, category: e.target.value})} /> */}
                     {/* <input type="hidden" name="userID" onChange={(e) => setPostData({ ...postData, userID: e.target.value})}></input> */}
-                    <Button variant="secondary" className="postForm-button" type="Submit">
+                    <Button variant="secondary" className="postForm-button" type="Submit" onClick={() => refreshPage()}>
                         Submit
                     </Button>
                     <DropdownButton className="postForm-button"

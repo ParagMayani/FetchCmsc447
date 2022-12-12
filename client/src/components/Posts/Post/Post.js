@@ -62,7 +62,7 @@ const Post = ({post, user}) => {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href={thread_url}>Threads</Dropdown.Item>
+                                <Dropdown.Item href={thread_url}>Comments</Dropdown.Item>
                                 <Dropdown.Item onClick={()=> editPost()}>Edit</Dropdown.Item>
                                 <Dropdown.Item href="/posts" onClick={() => dispatch(deletePost(data))}>Delete</Dropdown.Item>
                             </Dropdown.Menu>
@@ -79,7 +79,6 @@ const Post = ({post, user}) => {
                         
                         
                     </form>
-                    
                     <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={()=> dispatch(likePost(data))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(data))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>
             </div>

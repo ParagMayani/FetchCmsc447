@@ -32,7 +32,7 @@ const ThreadForm = ({post, currentId, setCurrentId}) => {
 
     return (
         <>
-            <h1>THREAD FORM</h1>
+            <h1>COMMENT FORM</h1>
             <div >
                 <form id="threadForm" autoComplete="on" onSubmit={handleSubmit} method="POST">
                     <textarea className="threadForm-textarea" name="description" onChange={(e) => setThreadData({ ...threadData, description: e.target.value})}></textarea>
