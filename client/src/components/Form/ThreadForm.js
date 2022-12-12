@@ -8,7 +8,7 @@ const ThreadForm = ({post, currentId, setCurrentId}) => {
     const [threadData, setThreadData] = useState({
         description: '',
         post_id: post,
-        created_by : JSON.stringify(localStorage.getItem("user"))._id
+        created_by : JSON.parse(localStorage.getItem("user"))._id
     });
 
     const dispatch = useDispatch();
