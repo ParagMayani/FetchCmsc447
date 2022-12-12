@@ -5,13 +5,6 @@ import {deletePost, likePost, dislikePost } from '../../../actions/posts';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './styles.css';
 
-function likeButton(){
-
-};
-function dislikeButton(){
-
-};
-
 const Post = ({post, user}) => {
     const dispatch = useDispatch();
     const userID = JSON.parse(localStorage.getItem("user"))._id;
@@ -63,7 +56,7 @@ const Post = ({post, user}) => {
                     </div>
                     <div className="feed-image p-2 px-3"><span>{post.description}</span></div>
                     
-                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(data))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(post))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
+                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(data))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(data))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>
             </div>
         </>

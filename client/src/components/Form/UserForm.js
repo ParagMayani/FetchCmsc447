@@ -20,6 +20,7 @@ const UserForm = () => {
         e.preventDefault();
         
         dispatch(createUser(postData));
+        
     }
 
     const clear = () => {

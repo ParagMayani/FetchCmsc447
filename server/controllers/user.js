@@ -17,7 +17,7 @@ export const createUsers = async (request, response) => {
      const user = await CreateUser.find({username: the_user.username});
      console.log(user);
      if (user[0] != null){
-        response.status(410).json({message: "Username already exists, try a different username"});
+        response.status(200).json({message: "Username already exists, try a different username"});
      } else {
         the_user.password = md5(the_user.password);
         const new_user = new CreateUser(the_user);

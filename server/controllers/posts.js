@@ -75,28 +75,28 @@ export const getFilteredPostByCategory = async (request, response) => {
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (response.status(404).send("No post with that ID"));
     }
-    const the_user = await CreateUser.findById(userID);
-    if(the_user.likes.length === 0){
-        console.log("There is nothing in likes");
-        const the_post = await CreatePost.findById(id);
-        const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : (the_post.likes + 1)}, {new: true});
-        await CreateUser.findByIdAndUpdate(userID, { $push: { likes: id }});
-        response.json(likedPost);
-    }
-    if(the_user.likes.length > 0){
-        console.log(the_user);
-        const the_post = await CreatePost.findById(id);
-        
-        // for(const postID of the_user.likes){
-        //     if(postID.toString() == the_post._id){
-        //         response.json(unlikePosts(id, userID));
-        //     }
-        // }
-        // const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : (the_post.likes + 1)}, {new: true});
-        // await CreateUser.findByIdAndUpdate(userID, { $push: { likes: id }});
-        // response.json(likedPost);
+    const alreadyDisliked = await CreateUser.find({dislike: id});
+    if (alreadyDisliked[0] !== undefined){
+        return (response.status(404).send("Cannot both like and dislike a post"));
     } else {
-        response.json(unlikePosts(id, userID));
+        const the_user = await CreateUser.findById(userID);
+        if(the_user.likes.length === 0){
+            const the_post = await CreatePost.findById(id);
+            const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : (the_post.likes + 1)}, {new: true});
+            await CreateUser.findByIdAndUpdate(userID, { $push: { likes: id }});
+            response.json(likedPost);
+        }
+        if(the_user.likes.length > 0){
+            const the_userliked = await CreateUser.find({_id: userID, likes: {$in: [id]}});
+            if(the_userliked[0] != null){
+                response.json(await unlikePosts(id, userID));
+            } else {
+                const the_post = await CreatePost.findById(id);
+                const likedPost = await CreatePost.findByIdAndUpdate(id, {likes : (the_post.likes + 1)}, {new: true});
+                await CreateUser.findByIdAndUpdate(userID, { $push: { likes: id }});
+                response.json(likedPost);
+            }  
+        }
     }
  }
 
@@ -113,22 +113,35 @@ export const getFilteredPostByCategory = async (request, response) => {
     if (!mongoose.Types.ObjectId.isValid(id)){
         return (res.status(404).send("No post with that ID"));
     }
-    const alreadyDisliked = await CreateUser.find({dislikes: request.body.post_id});
-    if(alreadyDisliked == null){
-        const the_post = await CreatePost.findById(id);
-        const dislikedPost = await CreatePost.findByIdAndUpdate(id, {dislikes : the_post.dislikes + 1}, {new: true});
-        await CreateUser.findByIdAndUpdate(request.body.user_id, { $push: { dislikes: request.body.post_id } }, {new: true});
-        response.json(dislikedPost);
-    }
-    else{
-        response.json(undislikePosts(request.body.post_id, request.body.user_id));
+    const alreadyliked = await CreateUser.find({likes: id});
+    if (alreadyliked[0] !== undefined){
+        return (response.status(404).send("Cannot both like and dislike a post"));
+    } else {
+        const the_user = await CreateUser.findById(userID);
+        if(the_user.dislike.length === 0){
+            const the_post = await CreatePost.findById(id);
+            const dislikedPost = await CreatePost.findByIdAndUpdate(id, {dislikes : (the_post.dislikes + 1)}, {new: true});
+            await CreateUser.findByIdAndUpdate(userID, { $push: { dislike: id }});
+            response.json(dislikedPost);
+        }
+        if(the_user.dislike.length > 0){
+            const the_userdisliked = await CreateUser.find({_id: userID, dislike: {$in: [id]}});
+            if(the_userdisliked[0] != null){
+                response.json(await undislikePosts(id, userID));
+            } else {
+                const the_post = await CreatePost.findById(id);
+                const dislikedPost = await CreatePost.findByIdAndUpdate(id, {dislikes : (the_post.dislikes + 1)}, {new: true});
+                await CreateUser.findByIdAndUpdate(userID, { $push: { dislike: id }});
+                response.json(dislikedPost);
+            }  
+        }
     }
  }
 
  async function undislikePosts(post_id, user_id){
     const the_post = await CreatePost.findById(post_id);
     const undislikedPost = await CreatePost.findByIdAndUpdate(post_id, {dislikes : the_post.dislikes - 1}, {new: true});
-    await CreateUser.findByIdAndUpdate(user_id, { $pull: { dislikes: post_id } }, {new: true});
+    await CreateUser.findByIdAndUpdate(user_id, { $pull: { dislike: post_id } });
     return undislikedPost;
  }
 

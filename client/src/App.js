@@ -13,11 +13,24 @@ import EmailForm from './components/Form/EmailForm';
 
 const App = () => {
     const user = localStorage.getItem("user");
+    console.log(user);
+    function main(user){
+        if(user == null){
+            return <LoginForm/>;
+        } else {
+            return <><Form/><Posts/></>;
+        }
+    }
     return(
         <>
         <BrowserRouter>
             <Routes>
-                <Route path ="/" element={<LoginForm/>}/>
+                <Route path ="/" element={
+                    <>
+                        {main(user)};
+                    </>
+                
+                }/>
                 <Route path ="/sign_up" element={<UserForm/>}/>
                 <Route path ="/log_in" element={<LoginForm/>}/>
                 <Route path ="/verify_email" element={<EmailForm/>}/>

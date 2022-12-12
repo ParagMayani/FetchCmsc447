@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import './formStyle.css';
 const Form = ({currentId, setCurrentId}) => {
     const [postData, setPostData] = useState({
-        description: '', category: 'General'
+        description: '', category: 'General', created_by: JSON.parse(localStorage.getItem("user"))._id
     });
 
     const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Form = ({currentId, setCurrentId}) => {
 
                     {/* <CreatableSelect isClearable options={options} name="category" onChange={(e) => setPostData({ ...postData, category: e.target.value})} /> */}
                     {/* <input type="hidden" name="userID" onChange={(e) => setPostData({ ...postData, userID: e.target.value})}></input> */}
-                    <Button variant="secondary" className="postForm-button" type="Submit" onClick={refreshPage}>
+                    <Button variant="secondary" className="postForm-button" type="Submit">
                         Submit
                     </Button>
                     <DropdownButton className="postForm-button"

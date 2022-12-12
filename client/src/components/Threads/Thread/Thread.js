@@ -5,8 +5,9 @@ import { dislikeThread, likeThread } from "../../../actions/threads";
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const Thread = ({thread, setCurrentId}) => {
-    console.log(thread._id);
     const dispatch = useDispatch();
+    const userID = JSON.parse(localStorage.getItem("user"))._id;
+    const data = {thread, userID};
     var today = new Date();
     var created = new Date(thread.created_on);
     var seconds = (today - created )/ 1000;
@@ -47,7 +48,7 @@ const Thread = ({thread, setCurrentId}) => {
                         </Dropdown>
                     </div>
                     <div className="feed-image p-2 px-3"><span>{thread.description}</span></div>
-                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likeThread(thread))}><i className="fa fa-arrow-up">{thread.likes}</i></button><button onClick ={() => dispatch(dislikeThread(thread))}><i className="fa fa-arrow-down">{thread.dislikes}</i></button></div>
+                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likeThread(data))}><i className="fa fa-arrow-up">{thread.likes}</i></button><button onClick ={() => dispatch(dislikeThread(data))}><i className="fa fa-arrow-down">{thread.dislikes}</i></button></div>
                 </div>
             </div>
         </>

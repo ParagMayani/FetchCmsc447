@@ -31,14 +31,10 @@ const LoginForm = () => {
                     navigate('/posts');
                 } else {
                     alert("Your Login is failed check username or password");
-                    //refreshPage();
                 }
             } else {
                 alert("Your Login is failed check username or password");
-                //refreshPage();
             }
-        } else {
-            //refreshPage();
         }
     }
 

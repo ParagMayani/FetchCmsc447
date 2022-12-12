@@ -7,7 +7,8 @@ import { createThread, updateThread } from "../../actions/threads";
 const ThreadForm = ({post, currentId, setCurrentId}) => {
     const [threadData, setThreadData] = useState({
         description: '',
-        post_id: post
+        post_id: post,
+        created_by : JSON.stringify(localStorage.getItem("user"))._id
     });
 
     const dispatch = useDispatch();
