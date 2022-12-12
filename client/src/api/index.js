@@ -13,7 +13,7 @@ export const createPost = (newPost) => axios.post((postURL + 'create'), newPost)
 export const updatePost = (post) => axios.patch((postURL + 'update/'), post);
 export const likePost = (post) => axios.patch((postURL + 'update/like/'), post);
 export const dislikePost = (post) => axios.patch((postURL + 'update/dislike/'), post);
-export const deletePost = (post) => axios.delete((postURL + 'delete/'), post);
+export const deletePost = (post) => axios.delete((postURL + 'delete'), {data : {postID: post.post._id, userID: post.userID}});
 
 export const verifyEmail = (email) => axios.post((userURL + 'verify'), email); 
 export const createUser = (newUser) => axios.post((userURL + 'create'), newUser).then((response) => {if(response.status == 200) alert(response.data.message); else alert("Sucessfully created\n Go to login page and log in")});

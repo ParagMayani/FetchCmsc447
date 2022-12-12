@@ -146,17 +146,22 @@ export const getFilteredPostByCategory = async (request, response) => {
  }
 
  export const deletePosts = async (request, response) => {
-    const id = request.body.post_id;
-    if (!mongoose.Types.ObjectId.isValid(id)){
-        return (res.status(404).send("No post with that ID"));
+    const userID = request.body.userID;
+    const postID = request.body.postID;
+    if (!mongoose.Types.ObjectId.isValid(postID)){
+        return (response.status(404).send("No post with that ID"));
     }
-    const the_post = CreatePost.findByIdAndRemove(id);
-    if (the_post.created.created_by === request.body.user_id){
-        await CreatePost.findByIdAndRemove(id);
+    const the_post = await CreatePost.findById(postID);
+    const the_user = await CreateUser.findById(userID);
+    console.log(the_post.created_by.toString());
+    console.log(the_user._id.toString());
+    if (the_post.created_by.toString() == the_user._id.toString()){
+        console.log("is this called?");
+        await CreatePost.findByIdAndRemove(the_post._id);
         response.json({message: "Post deleted successfully."});
     }
     else{
-        return (res.status(404).send("Invalid User"));
+        return (response.status(404).send("Invalid User"));
     }
  }
 

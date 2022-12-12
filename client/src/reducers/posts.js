@@ -10,7 +10,7 @@ export default (posts = [], action) => {
         case CREATE_POST:
             return [...posts, action.payload];
         case DELETE_POST:
-            return posts.filter((post => post._id === action.playload));
+            return posts.filter((post => post._id === action.payload));
         case EDIT_POST:
         case LIKE_POST:
         case DISLIKE_POST:

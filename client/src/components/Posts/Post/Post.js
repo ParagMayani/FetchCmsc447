@@ -1,14 +1,25 @@
 
 import React from "react";
 import { useDispatch } from "react-redux";
-import {deletePost, likePost, dislikePost } from '../../../actions/posts';
+import { deletePost, likePost, dislikePost, updatePost } from '../../../actions/posts';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './styles.css';
+
+function editPost(data){
+    if(data.userID === data.post.created_by){
+        return useDispatch(deletePost(data.userID));
+    } else {
+        alert("This post is not created by you!");
+    }
+
+}
+
+
 
 const Post = ({post, user}) => {
     const dispatch = useDispatch();
     const userID = JSON.parse(localStorage.getItem("user"))._id;
-    const data = {post, userID};    
+    const data = {post, userID};
     //var liked = false;
     //var disliked = false;
     var today = new Date();
@@ -22,6 +33,15 @@ const Post = ({post, user}) => {
 
     var thread_url = "/threads/" + post._id;
     var category_url = "/posts/" + post.category;
+
+    function removePost(){
+        console.log(data.userID);
+        console.log(data.post.created_by);
+        
+        if(data.userID === data.post.created_by){
+            dispatch(deletePost(data));
+        }
+    }
 
     if(seconds >= 60){
         Timeline = Math.round(minutes) + " minutes ago";
@@ -49,14 +69,14 @@ const Post = ({post, user}) => {
 
                             <Dropdown.Menu>
                                 <Dropdown.Item href={thread_url}>Threads</Dropdown.Item>
-                                <Dropdown.Item href="/posts" onClick={() => dispatch(deletePost())}>Edit</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">delete</Dropdown.Item>
+                                <Dropdown.Item href="/posts" onClick={() => dispatch(updatePost(data))}>Edit</Dropdown.Item>
+                                <Dropdown.Item href="/posts" onClick={() => dispatch(deletePost(data))}>Delete</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                     <div className="feed-image p-2 px-3"><span>{post.description}</span></div>
                     
-                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={() => dispatch(likePost(data))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(data))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
+                    <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={()=> dispatch(likePost(data))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(data))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>
             </div>
         </>
