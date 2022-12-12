@@ -1,11 +1,11 @@
 
 import React, {useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginUser } from "../../actions/users";
 
 import { TextField, Button, Paper } from '@material-ui/core';
 import pkg from 'blueimp-md5';
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const md5 = pkg;
 
 function refreshPage() {

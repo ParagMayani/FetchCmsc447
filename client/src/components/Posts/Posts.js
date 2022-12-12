@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate, useInRouterContext, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { filterPostsByCategory, getPosts } from "../../actions/posts";
 
 

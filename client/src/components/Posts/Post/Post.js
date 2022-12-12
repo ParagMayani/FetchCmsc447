@@ -1,22 +1,20 @@
 
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { deletePost, likePost, dislikePost, updatePost } from '../../../actions/posts';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './styles.css';
+import Button from "react-bootstrap/esm/Button";
 
-function editPost(data){
-    if(data.userID === data.post.created_by){
-        return useDispatch(deletePost(data.userID));
-    } else {
-        alert("This post is not created by you!");
-    }
-
-}
 
 
 
 const Post = ({post, user}) => {
+    const [postData, setPostData] = useState({
+        postData: post
+    });
+    console.log(postData);
     const dispatch = useDispatch();
     const userID = JSON.parse(localStorage.getItem("user"))._id;
     const data = {post, userID};
@@ -34,13 +32,9 @@ const Post = ({post, user}) => {
     var thread_url = "/threads/" + post._id;
     var category_url = "/posts/" + post.category;
 
-    function removePost(){
-        console.log(data.userID);
-        console.log(data.post.created_by);
-        
-        if(data.userID === data.post.created_by){
-            dispatch(deletePost(data));
-        }
+    function editPost(){
+        document.getElementById('editForm').id = 'postForm';
+        document.getElementById('postForm').id = 'edifForm';
     }
 
     if(seconds >= 60){
@@ -69,12 +63,22 @@ const Post = ({post, user}) => {
 
                             <Dropdown.Menu>
                                 <Dropdown.Item href={thread_url}>Threads</Dropdown.Item>
-                                <Dropdown.Item href="/posts" onClick={() => dispatch(updatePost(data))}>Edit</Dropdown.Item>
+                                <Dropdown.Item onClick={()=> editPost()}>Edit</Dropdown.Item>
                                 <Dropdown.Item href="/posts" onClick={() => dispatch(deletePost(data))}>Delete</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                     <div className="feed-image p-2 px-3"><span>{post.description}</span></div>
+                    <form id="editForm">
+                        <textarea className="postForm-textarea" name="description" value={post.description} onChange={(e) => setPostData({...postData, description: e.target.value})}>
+                        
+                        </textarea>
+                        <Button variant="secondary" className="editForm-button" type="Submit" onClick={() => dispatch(updatePost(postData))}>
+                            Submit
+                        </Button>
+                        
+                        
+                    </form>
                     
                     <div className="d-flex justify-content-end socials p-2 py-3"><button onClick={()=> dispatch(likePost(data))}><i className="fa fa-arrow-up">{post.likes}</i></button><button onClick ={() => dispatch(dislikePost(data))}><i className="fa fa-arrow-down">{post.dislikes}</i></button></div>
                 </div>

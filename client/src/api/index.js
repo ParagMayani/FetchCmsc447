@@ -16,7 +16,7 @@ export const dislikePost = (post) => axios.patch((postURL + 'update/dislike/'), 
 export const deletePost = (post) => axios.delete((postURL + 'delete'), {data : {postID: post.post._id, userID: post.userID}});
 
 export const verifyEmail = (email) => axios.post((userURL + 'verify'), email); 
-export const createUser = (newUser) => axios.post((userURL + 'create'), newUser).then((response) => {if(response.status == 200) alert(response.data.message); else alert("Sucessfully created\n Go to login page and log in")});
+export const createUser = (newUser) => axios.post((userURL + 'create'), newUser).then((response) => {if(response.status === 200) alert(response.data.message); else alert("Sucessfully created\n Go to login page and log in")});
 export const updateUser = (user) => axios.patch((userURL + 'update'), user);
 export const deleteUser = (user) => axios.delete((userURL + 'delete'), user);
 

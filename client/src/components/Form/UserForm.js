@@ -2,10 +2,9 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../actions/users";
-import md5 from 'md5-hash';
 
 import { TextField, Button, Paper } from '@material-ui/core';
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const UserForm = () => {

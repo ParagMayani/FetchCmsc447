@@ -3,6 +3,12 @@
     height: 50px;
 }
 
+#editForm {
+    width: inherit;
+    height: 0px;
+    visibility: collapse;
+}
+
 .postForm-textarea  {
     width: 100%;
     box-sizing: border-box;
@@ -14,7 +20,12 @@
 }
 
 .postForm-button {
+    display: block;
     float: right;
+}
+
+.editForm-button {
+    display: block;
 }
 
 
