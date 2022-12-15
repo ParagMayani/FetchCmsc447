@@ -1,0 +1,50 @@
+#postForm {
+    width: inherit;
+    height: 50px;
+}
+
+#editForm {
+    width: inherit;
+    height: 0px;
+    visibility: collapse;
+}
+
+.postForm-textarea  {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius:  4px;
+    background-color: #f8f8f8;
+    resize: none;
+    height: auto;
+}
+
+.postForm-button {
+    display: block;
+    float: right;
+}
+
+.editForm-button {
+    display: block;
+}
+
+
+#threadForm {
+    width: inherit;
+    height: 50px;
+}
+
+.threadForm-textarea  {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius:  4px;
+    background-color: #f8f8f8;
+    resize: none;
+    height: auto;
+}
+
+.threadForm-button {
+    float: right;
+}
+

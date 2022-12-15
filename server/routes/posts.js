@@ -1,16 +1,16 @@
 import express from "express";
 
-import { getPosts, createPosts, updatePosts, likePosts, unlikePosts, dislikePosts, undislikePosts, deletePosts } from "../controllers/posts.js";
+import { getAllPosts, createPosts, updatePosts, likePosts, dislikePosts, deletePosts, getFilteredPostById, getFilteredPostByCategory } from "../controllers/posts.js";
 
 const router = express.Router();
 
-router.get("/get", getPosts);
+router.get("/get", getAllPosts);
+router.get("/get/filters/id=:_id", getFilteredPostById);
+router.get("/get/filters/category=:category", getFilteredPostByCategory);
 router.post("/create", createPosts);
-router.patch("/update/:userID/:postID", updatePosts);
-router.patch("/update/like/:postID", likePosts);
-router.patch("/update/unlike/:postID", unlikePosts);
-router.patch("/update/dislike/:postID", dislikePosts);
-router.patch("/update/undislike/:postID", undislikePosts);
-router.delete("/delete/:userID/:postID", deletePosts);
+router.patch("/update", updatePosts);
+router.patch("/update/like", likePosts);
+router.patch("/update/dislike", dislikePosts);
+router.delete("/delete", deletePosts);
 
 export default router;

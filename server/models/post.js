@@ -1,10 +1,7 @@
 import mongoose from 'mongoose';
 
-const postSchema = new mongoose.Schema({
-    description: {
-        type: String,
-        default: ''
-    },
+const postSchema = mongoose.Schema({
+    description: String,
     likes: {
         type: Number,
         default: 0
@@ -13,26 +10,11 @@ const postSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    academia: {
-        type: Boolean,
-        default: false
+    category: {
+        type: String,
+        default: "General"
     },
-    industry: {
-        type: Boolean,
-        default: false
-    },
-    hobbies: {
-        type: Boolean,
-        default: false
-    },
-    music: {
-        type: Boolean,
-        default: false
-    },
-    created_by: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'CreateUser'
-    },
+    created_by: mongoose.Schema.Types.ObjectId,
     created_on: {type: Date, default: Date.now}
 });
 
